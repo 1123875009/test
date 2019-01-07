@@ -6,6 +6,9 @@ import java.util.UUID;
  */
 public class ActiveCodeUtils {
 	public static String createActiveCode() {
-		return UUID.randomUUID().toString();
+		return UUID.randomUUID().toString();//随机生成的激活码
 	}
 }
+
+
+

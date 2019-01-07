@@ -9,9 +9,9 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/client/js/form.js"></script>
 <script type="text/javascript">
 	function changeImage() {
-		// 改变验证码图片中的文字
+		// 改变验证码图片中的文字 找到CheckImageServlet可获取验证码
 		document.getElementById("img").src = "${pageContext.request.contextPath}/imageCode?time="
-				+ new Date().getTime();
+				+ new Date().getTime();  //将注册的当前时间以参数传出
 	}
 </script>
 </head>

@@ -40,7 +40,7 @@ public class EditNoticeServlet extends HttpServlet{
 		//将当前时间设为添加公告的时间
 		String t = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
 		
-		bean.setN_id(n_id);
+		bean.setN_id(n_id);//id仍为之前的id值
 		bean.setTitle(title);
 		bean.setDetails(details);
 		bean.setN_time(t);

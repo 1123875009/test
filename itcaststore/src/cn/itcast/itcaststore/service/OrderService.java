@@ -102,15 +102,15 @@ public class OrderService {
 		return orders;
 	}
 	//根据id删除订单 管理员删除订单
-	public void delOrderById(String id) {			
+	public void delOrderById(String id) {		//删除已经支付过的订单	
 		try {
 			DataSourceUtils.startTransaction();//开启事务
-			oidao.delOrderItems(id);
-			odao.delOrderById(id);
+			oidao.delOrderItems(id);  //删除订单和订单的子项
+			odao.delOrderById(id);     
 		} catch (SQLException e) {
 			e.printStackTrace();
 			try {
-				DataSourceUtils.rollback();
+				DataSourceUtils.rollback();//出错回滚到事务开启前的状态
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
@@ -130,7 +130,7 @@ public class OrderService {
 			Order order=new Order();
 			order.setId(id);
 			List<OrderItem> items=oidao.findOrderItemByOrder(order);
-			//修改商品数量			
+			//修改商品数量 相当于添加库存	
 			pdao.updateProductNum(items);						
 			oidao.delOrderItems(id); //删除订单项
 			odao.delOrderById(id); //删除订单

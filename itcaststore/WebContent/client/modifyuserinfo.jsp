@@ -72,7 +72,7 @@
 									</tr>
 									<tr>
 										<td style="text-align:right">性别：</td>
-										<td colspan="2">&nbsp;&nbsp;
+										<td colspan="2">&nbsp;&nbsp;                                   <!-- 判断原有的性别 原来的性别是什么就选中，不是则不选 -->
 											<input type="radio" name="radiobutton" value="radiobutton" ${user.gender=='男'?'checked':'' }/> 男
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 											<input type="radio" name="radiobutton" value="radiobutton"  ${user.gender=='女'?'checked':'' }/> 女
@@ -82,7 +82,7 @@
 										<td style="text-align:right">联系方式：</td>
 										<td colspan="2">
 											<input name="text2" type="text" value="${user.telephone}" class="textinput" />
-										</td>
+										</td>                                       <!--默认直接显示原有的电话号码 -->
 									</tr>
 									<tr>
 										<td style="text-align:right">&nbsp;</td>
@@ -91,7 +91,8 @@
 									</tr>
 								</table>
 								<p style="text-align:center">
-									<a href="success.html">
+									<!-- <a href="success.html"> -->
+									<a href="${pageContext.request.contextPath}/ModifyPwd">
 										<img src="${pageContext.request.contextPath }/client/images/botton_gif_025.gif" border="0" width="140" height="35"/>
 									</a>
 								</p>

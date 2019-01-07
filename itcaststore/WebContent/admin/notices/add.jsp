@@ -6,6 +6,7 @@
 <LINK href="${pageContext.request.contextPath}/admin/css/Style.css" type="text/css" rel="stylesheet">
 </HEAD>
 <body>
+<!-- 表单提交到addnoticeServlet -->
 	<form id="userAction_save_do" name="Form1" action="${pageContext.request.contextPath}/manager/AddNoticeServlet" method="post">
 		&nbsp;
 		<table cellSpacing="1" cellPadding="5" width="100%" align="center"

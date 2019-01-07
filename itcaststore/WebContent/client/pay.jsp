@@ -12,7 +12,7 @@
 <meta http-equiv="description" content="This is my page">
 </head>
 <body>
-	<p:user/>
+	<p:user/>   <!-- 提交到的payservlet -->
 	<form action="${pageContext.request.contextPath}/pay" method="post">
 		订单号：<INPUT TYPE="text" NAME="orderid" value="${param.id}">
 		支付金额：<INPUT TYPE="text" NAME="money" value="${param.money}">元

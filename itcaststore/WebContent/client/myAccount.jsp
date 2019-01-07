@@ -46,7 +46,7 @@
 								<img src="${pageContext.request.contextPath }/client/images/icon3.png" width="15" height="10" />
 								&nbsp;&nbsp;&nbsp;&nbsp; 
 								<a href="${pageContext.request.contextPath}/logout" onclick="javascript:return confirm_logout()">用户退出</a>
-							</td>
+							</td>           <!--退出时弹出确认框，并在logoutservlet中将session释放并重定向到首页-->
 						</tr>
 					</table>
 				</td>

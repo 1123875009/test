@@ -95,7 +95,7 @@ public class ProductService {
 	//前台，获取本周热销商品
 	public List<Object[]> getWeekHotProduct() {
 		try {
-			return dao.getWeekHotProduct();
+			return dao.getWeekHotProduct();//返回商品的列表，为热销的商品(2)
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException("前台获取本周热销商品失败！");
@@ -116,7 +116,7 @@ public class ProductService {
 			int totalCount = dao.findBookByNameAllCount(searchfield);
 			bean.setTotalCount(totalCount);
 
-			// 获取总页数
+			// 获取总页数       ceil函数向上取整，因为是int类型 均丢掉小数位，则*1.0，防止除数为0
 			int totalPage = (int) Math.ceil(totalCount * 1.0 / currentCount);
 			bean.setTotalPage(totalPage);
 

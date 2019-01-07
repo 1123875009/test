@@ -23,7 +23,7 @@
 	</script>
 </HEAD>
 <body>
-	<br />
+	<br /><!-- 按条件查询提交表单到 findProductByManyCondition-->
 	<form id="Form1" name="Form1"
 		action="${pageContext.request.contextPath}/findProductByManyCondition"
 		method="post">
@@ -40,6 +40,7 @@
 							<tr>
 								<td height="22" align="center" bgColor="#f5fafe" class="ta_01">商品编号</td>
 								<td class="ta_01" bgColor="#ffffff">
+								<!-- 可根据属性“name”的值来获取输入框的值 -->
 									<input type="text" name="id" size="15" value="" id="Form1_userName" class="bg" />
 								</td>
 								<td height="22" align="center" bgColor="#f5fafe" class="ta_01">类别：</td>
@@ -99,7 +100,7 @@
 					</TD>
 				</tr>
 				<tr>
-					<td class="ta_01" align="right">
+					<td class="ta_01" align="right"><!-- 添加商品 -->
 						<button type="button" id="add" name="add" value="&#28155;&#21152;" class="button_add" onclick="addProduct()">
 							&#28155;&#21152;
 						</button>
@@ -119,7 +120,7 @@
 								<td width="8%" align="center">编辑</td>
 								<td width="8%" align="center">删除</td>
 							</tr>
-                            <!--  循环输出所有商品 -->
+                            <!--  循环输出所有商品  每一个商品都赋值给变量p-->
 							<c:forEach items="${ps}" var="p">
 								<tr onmouseover="this.style.backgroundColor = 'white'"
 									onmouseout="this.style.backgroundColor = '#F5FAFE';">
@@ -128,7 +129,7 @@
 									<td style="CURSOR: hand; HEIGHT: 22px" align="center" width="8%">${p.price }</td>
 									<td style="CURSOR: hand; HEIGHT: 22px" align="center" width="8%">${p.pnum }</td>
 									<td style="CURSOR: hand; HEIGHT: 22px" align="center">${p.category}</td>
-									<td align="center" style="HEIGHT: 22px" width="7%">
+									<td align="center" style="HEIGHT: 22px" width="7%">    <!--编辑按钮，链接为通过id查询商品并且传递参数type 声明请求的来源-->
 									    <a href="${pageContext.request.contextPath}/findProductById?id=${p.id}&type=admin">
 											<img src="${pageContext.request.contextPath}/admin/images/i_edit.gif" border="0" style="CURSOR: hand"> 
 										</a>

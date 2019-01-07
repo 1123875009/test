@@ -22,7 +22,7 @@ public class RegisterServlet extends HttpServlet {
 		// 将表单提交的数据封装到javaBean
 		User user = new User();
 		try {
-			BeanUtils.populate(user, request.getParameterMap());
+			BeanUtils.populate(user, request.getParameterMap());//将对应的参数赋给user对象
 			// 封裝激活码
 			user.setActiveCode(ActiveCodeUtils.createActiveCode());
 		} catch (IllegalAccessException e) {

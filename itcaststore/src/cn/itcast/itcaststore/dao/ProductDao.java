@@ -27,7 +27,7 @@ public class ProductDao {
 		String sql = "select * from products";
 		QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
 		return runner.query(sql, new BeanListHandler<Product>(Product.class));
-	}
+	}                        //查到的字段将其都一一赋值给product对象。最后返回一个product列表
 	// 获取数据总条数
 	public int findAllCount(String category) throws SQLException {
 		String sql = "select count(*) from products";
@@ -106,10 +106,10 @@ public class ProductDao {
 		String sql = "select * from products where 1=1 ";
 
 		QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
-
+              //id的输入框有值且不为空时
 		if (id != null && id.trim().length() > 0) {
 			sql += " and id=?";
-			list.add(id);
+			list.add(id); //将此字段加入where条件
 		}
 
 		if (name != null && name.trim().length() > 0) {
@@ -130,7 +130,7 @@ public class ProductDao {
 		Object[] params = list.toArray();
 
 		return runner.query(sql, new BeanListHandler<Product>(Product.class),
-				params);
+				params);    //返回多个对象商品 
 	}
 	// 修改商品信息
 	public void editProduct(Product p) throws SQLException {
@@ -164,7 +164,7 @@ public class ProductDao {
 		String sql = "update products set pnum=pnum+? where id=?";
 		QueryRunner runner = new QueryRunner();
 		
-		Object[][] params = new Object[items.size()][2];
+		Object[][] params = new Object[items.size()][2]; //由于订单条目可能有多个，所以需要根据条目的多少依次修改
 
 		for (int i = 0; i < params.length; i++) {
 			params[i][0] = items.get(i).getBuynum();
@@ -174,7 +174,7 @@ public class ProductDao {
 		runner.batch(DataSourceUtils.getConnection(), sql, params);
 	}
 
-	//前台，获取本周热销商品
+	//前台，获取本周热销商品，最近七天
 	public List<Object[]> getWeekHotProduct() throws SQLException {
 		String sql = "SELECT products.id,products.name, "+
                              " products.imgurl,SUM(orderitem.buynum) totalsalnum "+
@@ -187,7 +187,7 @@ public class ProductDao {
                      " ORDER BY totalsalnum DESC "+
                      " LIMIT 0,2 ";
 		QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
-		return runner.query(sql, new ArrayListHandler());
+		return runner.query(sql, new ArrayListHandler());//返回商品的列表，查询到的字段一一赋值给对象
 	}
 
 	//前台，用于搜索框根据书名来模糊查询相应的图书
@@ -200,14 +200,14 @@ public class ProductDao {
 //		Object obj = new Object[] { (currentPage - 1) * currentCount, currentCount };
 		return runner.query(sql, 
 				new BeanListHandler<Product>(Product.class),currentPage-1,currentCount);
-	}
+	}         //得到符合条件的商品列表，从当前页的索引开始，取4条记录
 
 	//前台搜索框，根据书名模糊查询出的图书总数量
 	public int findBookByNameAllCount(String searchfield) throws SQLException {
 		String sql = "SELECT COUNT(*) FROM products WHERE name LIKE '%"+searchfield+"%'";
 		QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
 		//查询出满足条件的总数量，为long类型
-		Long count = (Long)runner.query(sql, new ScalarHandler());
+		Long count = (Long)runner.query(sql, new ScalarHandler());//输入来的是一个值，因此为标量
 		return count.intValue();
 	}
 

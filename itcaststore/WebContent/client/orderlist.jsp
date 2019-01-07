@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="p" uri="http://www.itcast.cn/tag"%>
+<%@taglib prefix="p" uri="http://www.itcast.cn/tag"%>  <!-- 自定义的标签 -->
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -19,7 +19,7 @@
 	</script>
 </head>
 <body class="main">
-	<!-- 使用了自定义标签 -->
+	<!-- 使用了自定义标签  这里的标签实际上是执行了PrivilegeTag.class中的代码段，判断用户是否有权限进行操作-->
 	<p:user/>
 	<jsp:include page="head.jsp" />
 	<jsp:include page="menu_search.jsp" />
@@ -66,6 +66,7 @@
 						<tr>
 							<td style="padding:20px"><p><b>我的订单</b></p>
 								<p>
+								                                  <!-- 将订单数显示出来 -->
 									共有<font style="color:#FF0000" >${orders.size()}</font>订单
 								</p>
 								<table width="100%" border="0" cellspacing="0" class="tableopen">
@@ -76,18 +77,22 @@
 										<td bgcolor="#A3B6E6" class="tableopentd01">状态</td>
 										<td bgcolor="#A3E2E6" class="tableopentd01">操作</td>
 									</tr>
+									<!-- 循环 -->
 									<c:forEach items="${orders}" var="order">
 										<tr>
 											<td class="tableopentd02">${order.id}</td>
 											<td class="tableopentd02">${order.receiverName }</td>
 											<td class="tableopentd02">${order.ordertime}</td>
 											<td class="tableopentd02">${order.paystate==0?"未支付":"已支付"}</td>
-											<td class="tableopentd03">
+											<td class="tableopentd03">                         <!--通过订单的id号查看 -->
 												<a href="${pageContext.request.contextPath}/findOrderById?id=${order.id}">查看</a>&nbsp;&nbsp;
+												<!-- 删除订单需要判断判断订单的支付状态 -->
+												<!-- 未支付时 将订单的id传出-->
 												<c:if test="${order.paystate==0 }">
 													<a href="${pageContext.request.contextPath}/delOrderById?id=${order.id}"  onclick="javascript:return o_del()">刪除</a>
 												</c:if> 
-												<c:if test="${order.paystate!=0 }">
+												<!-- 若已支付  将订单的id传出 并加上参数type-->
+												<c:if test="${order.paystate!=0 }">     <!-- 进入servlet进行判断 -->
 													<a href="${pageContext.request.contextPath}/delOrderById?id=${order.id}&type=client" onclick="javascript:return o_del()">刪除</a>
 												</c:if>
 											</td>

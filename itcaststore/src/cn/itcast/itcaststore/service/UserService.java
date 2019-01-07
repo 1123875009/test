@@ -14,13 +14,13 @@ public class UserService {
 	public void register(User user) throws RegisterException {
 		// 调用dao完成注册操作
 		try {
-			dao.addUser(user);
+			dao.addUser(user);//将用户插入表中
 			// 发送激活邮件
 			String emailMsg = "感谢您注册网上书城，点击"
 					+ "<a href='http://localhost:8080/bookstore/activeUser?activeCode="
 					+ user.getActiveCode() + "'>&nbsp;激活&nbsp;</a>后使用。"
 							+ "<br />为保障您的账户安全，请在24小时内完成激活操作";
-			MailUtils.sendMail(user.getEmail(), emailMsg);
+			MailUtils.sendMail(user.getEmail(), emailMsg);//发送邮件 激活码
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RegisterException("注冊失败");

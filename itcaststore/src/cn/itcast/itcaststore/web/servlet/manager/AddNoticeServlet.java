@@ -37,7 +37,7 @@ public class AddNoticeServlet extends HttpServlet{
 		bean.setN_time(t);
 		//调用addNotice方法
 		nService.addNotice(bean);
-		
+		//转发  相当于添加过后刷新页面，重新将公告查找一遍
 		req.getRequestDispatcher("/manager/ListNoticeServlet").forward(req, resp);
 	}
 }

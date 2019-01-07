@@ -5,7 +5,7 @@ import org.apache.commons.dbutils.handlers.BeanHandler;
 import cn.itcast.itcaststore.domain.User;
 import cn.itcast.itcaststore.utils.DataSourceUtils;
 
-public class UserDao {
+public class UserDao {//相应的对数据库的操作
 	// 添加用户
 	public void addUser(User user) throws SQLException {
 		String sql = "insert into user(username,password,gender,email,telephone,introduce,activecode) values(?,?,?,?,?,?,?)";
@@ -38,6 +38,6 @@ public class UserDao {
 		String sql="select * from user where username=? and password=?";
 		QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
 		return runner.query(sql, new BeanHandler<User>(User.class),username,password);
-	}
+	}//sql，返回的user对象，两个占位符的参数
 
 }

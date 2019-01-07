@@ -1,10 +1,10 @@
 package cn.itcast.itcaststore.domain;
 
-public class OrderItem {
+public class OrderItem {//订单条目，相当于订单的一类商品项
 
-	private Order order;
-	private Product p;
-	private int buynum;
+	private Order order;//属于哪个订单
+	private Product p;//买了哪个商品
+	private int buynum;//购买的数量
 
 	public Order getOrder() {
 		return order;

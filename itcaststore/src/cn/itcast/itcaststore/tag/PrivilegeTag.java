@@ -9,7 +9,7 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
 
 import cn.itcast.itcaststore.domain.User;
 
-public class PrivilegeTag extends SimpleTagSupport {
+public class PrivilegeTag extends SimpleTagSupport {    //自定义标签 判断是否已经登录，若没有登录 则转向错误页面
 	@Override
 	public void doTag() throws JspException, IOException {
 		PageContext context = (PageContext) this.getJspContext();

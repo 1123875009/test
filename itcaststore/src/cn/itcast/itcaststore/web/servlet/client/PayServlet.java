@@ -25,6 +25,7 @@ public class PayServlet extends HttpServlet {
 		request.setAttribute("bank", bank);
 		request.setAttribute("orderid", orderid);	
 		request.setAttribute("money", money);
+		//跳转到确认页面，确定支付
 		request.getRequestDispatcher("/client/confirm.jsp").forward(request, response);
 	}
 }

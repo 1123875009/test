@@ -51,7 +51,7 @@
 						</tr>
 					</table>
 					<table width="100%" border="0" cellspacing="0">
-						<tr>
+						<tr> <!-- 使用数组来循环保存一个列表对象pArray[0]id号码 pArray[1]name -->
 						<c:forEach items="${pList }" var="pArray">
 							<td style="width:80; text-align:center">
 								<a href="${pageContext.request.contextPath}/findProductById?id=${pArray[0]}">

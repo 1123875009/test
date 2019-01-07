@@ -44,6 +44,7 @@ function search(){
 		<a href="${pageContext.request.contextPath}/showProductByPage?category=生活百科">生活百科</a> 
 		<a href="${pageContext.request.contextPath}/showProductByPage" style="color:#b4d76d">全部商品目录</a>		
 </div>
+<!-- 编辑框输入搜索商品 -->
 <div id="divsearch">
 <form action="${pageContext.request.contextPath }/MenuSearchServlet" id="searchform">
 	<table width="100%" border="0" cellspacing="0">

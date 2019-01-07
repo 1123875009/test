@@ -22,7 +22,7 @@ public class ChangeOrderStateServlet extends HttpServlet {
 				OrderService service = new OrderService();
 				// 根据订单号修改订单状态
 				try {
-					service.updateState(orderid);
+					service.updateState(orderid);//将订单的状态置为已付款
 					request.setAttribute("paySuccess", paySuccess);
 					request.getRequestDispatcher("/findOrderByUser").forward(request, response);
 				} catch (Exception e) {

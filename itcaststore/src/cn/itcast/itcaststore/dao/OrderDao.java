@@ -37,7 +37,7 @@ public class OrderDao {
 	public List<Order> findOrderByUser(final User user) throws SQLException {
 		String sql = "select * from orders where user_id=?";
 		QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
-		return runner.query(sql, new ResultSetHandler<List<Order>>() {
+		return runner.query(sql, new ResultSetHandler<List<Order>>() {//返回的是一个对象列表
 			public List<Order> handle(ResultSet rs) throws SQLException {
 				List<Order> orders = new ArrayList<Order>();
 				while (rs.next()) {
@@ -54,7 +54,7 @@ public class OrderDao {
 				}
 				return orders;
 			}
-		}, user.getId());
+		}, user.getId());//占位符赋值
 	}
 	/**
 	 * 根据id查找订单信息

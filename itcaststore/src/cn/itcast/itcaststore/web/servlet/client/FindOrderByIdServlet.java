@@ -34,5 +34,4 @@ public class FindOrderByIdServlet extends HttpServlet {
 		}
 		request.getRequestDispatcher("/client/orderInfo.jsp").forward(request, response);
 	}
-
 }

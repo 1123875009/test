@@ -12,7 +12,7 @@
 		src="${pageContext.request.contextPath}/admin/js/check.js"></script>
 </HEAD>
 <body>
-	<form id="userAction_save_do" name="Form1" 
+	<form id="userAction_save_do" name="Form1"> <!-- 提交到EditNoticeServlet -->
 		action="${pageContext.request.contextPath}/manager/EditNoticeServlet" method="post">
 		<input type="hidden" name="id" value="${n.n_id}" /> &nbsp;
 		<table cellSpacing="1" cellPadding="5" width="100%" align="center"

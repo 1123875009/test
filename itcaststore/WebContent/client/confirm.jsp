@@ -7,7 +7,7 @@
 <title>确认支付</title>
 </head>
 <body>
-	<!-- 确认支付form -->
+	<!-- 确认支付form 提交到ChangeOrderStateServlet处理-->
 	<form action="${pageContext.request.contextPath }/orderstate" method="post">
 		<h3>订单号：${orderid},付款金额 ：${money}</h3>
 			<input type="hidden" name="orderid" value="${orderid}"/> 

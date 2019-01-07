@@ -10,7 +10,7 @@ public class PageBean implements Serializable{
 	private int totalCount;// 总条数
 	private int totalPage;// 总页数
 	private int currentCount;// 每页条数
-	private List<Product> ps;// 每页显示的数据
+	private List<Product> ps;// 每页显示的图书信息
 	private String category;//类别
 	private String searchfield;//模糊搜索的图书名
 

@@ -1,10 +1,10 @@
 package cn.itcast.itcaststore.domain;
 
 public class Notice {
-	private int n_id;
-	private String title;
-	private String details;
-	private String n_time;
+	private int n_id;//公告编码
+	private String title;//标题
+	private String details;//内容
+	private String n_time;//发布时间
 	
 	public String getN_time() {
 		return n_time;

@@ -56,7 +56,7 @@ public class NoticeService {
 	//前台系统，查询最新添加或修改的一条公告
 	public Notice getRecentNotice() {
 		try {
-			return dao.getRecentNotice();
+			return dao.getRecentNotice();//获得notice对象
 		} catch (SQLException e) {
 			throw new RuntimeException("查询最新添加或修改的一条公告失败！");
 		}

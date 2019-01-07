@@ -27,7 +27,7 @@ public class FindProductByManyConditionServlet extends HttpServlet {
 				category, minprice, maxprice);
 		// 4.将条件查询的结果放进request域中
 		request.setAttribute("ps", ps);
-		// 5.请求重定向到商品管理首页list.jsp页面
+		// 5.请求转发到商品管理首页list.jsp页面
 		request.getRequestDispatcher("/admin/products/list.jsp").forward(
 				request, response);
 	}

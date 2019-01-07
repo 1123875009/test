@@ -5,7 +5,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<LINK href="${pageContext.request.contextPath}/admin/css/Style.css" type="text/css" rel="stylesheet">
 </HEAD>
-<body>
+<body>   <!-- 表单提交到addproductServlet -->
 	<form id="userAction_save_do" name="Form1"
 		action="${pageContext.request.contextPath}/addProduct" method="post"
 		enctype="multipart/form-data">

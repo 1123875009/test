@@ -84,7 +84,7 @@
 								<td width="10%" align="center">订单状态</td>
 								<td width="7%" align="center">查看</td>
 								<td width="7%" align="center">删除</td>
-							</tr>
+							</tr><!-- 默认进入页面显示所有的订单 因此从request中取出来orders进行遍历 -->
 							<c:forEach items="${orders}" var="order">
 								<tr onmouseover="this.style.backgroundColor = 'white'"
 									onmouseout="this.style.backgroundColor = '#F5FAFE';">
@@ -96,6 +96,7 @@
 									<td width="8%" align="center">${order.user.username}</td>
 									<td width="10%" align="center">${order.paystate==0?"未支付":"已支付"}</td>
 									<td align="center" style="HEIGHT: 22px">
+									<!-- 查看订单 链接中含有订单编号的信息可以查询订单的详细信息，type用于区分普通用户和超级用户-->
 										<a href="${pageContext.request.contextPath}/findOrderById?id=${order.id}&type=admin">
 											<img src="${pageContext.request.contextPath}/admin/images/button_view.gif" border="0" style="CURSOR: hand">
 										</a>

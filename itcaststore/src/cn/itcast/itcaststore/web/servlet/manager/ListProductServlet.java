@@ -27,7 +27,7 @@ public class ListProductServlet extends HttpServlet {
 			List<Product> ps = service.listAll();
 			// 3.将查询出的所有商品放进request域中
 			request.setAttribute("ps", ps);
-			// 4.重定向到list.jsp页面
+			// 4.转发到list.jsp页面
 			request.getRequestDispatcher("/admin/products/list.jsp").forward(
 					request, response);
 			return;

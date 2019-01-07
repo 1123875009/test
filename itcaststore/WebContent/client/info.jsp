@@ -25,12 +25,15 @@
 									<tr>
 										<td width="30%">
 											<div class="divbookcover">
-												<p>
+												<p>            <!-- 显示图书的图片 -->
 													<img src="${pageContext.request.contextPath}${p.imgurl}" width="213" height="269" border="0" />
 												</p>
 											</div>
-											<div style="text-align:center; margin-top:10px">
-												<a href="${pageContext.request.contextPath}/addCart?id=${p.id}">
+											<div style="text-align:center; margin-top:10px">            
+												<a href="${pageContext.request.contextPath}/addCart?id=${p.id}"><!-- 加入购物车并传递id -->
+							<!-- 商品添加 -->			<img src="${pageContext.request.contextPath }/client/images/buybutton.gif" border="0" width="100" height="25" /> 
+												</a>
+							<!-- 商品收藏 -->		<a href="${pageContext.request.contextPath}/AddCollection?id=${p.id}">		
 													<img src="${pageContext.request.contextPath }/client/images/buybutton.gif" border="0" width="100" height="25" /> 
 												</a>
 											</div>
@@ -38,7 +41,7 @@
 										<td style="padding:20px 5px 5px 5px">
 											<img src="${pageContext.request.contextPath }/client/images/miniicon3.gif" width="16" height="16" />
 											<font class="bookname">&nbsp;${p.name}</font>
-											<hr />售价：<font color="#FF0000">￥${p.price}</font>
+											<hr />售价：<font color="#FF0000">￥${p.price}</font><!-- 显示图书的价格 -->
 											<hr /> 类别：${p.category }
 											<hr />
 											<p>

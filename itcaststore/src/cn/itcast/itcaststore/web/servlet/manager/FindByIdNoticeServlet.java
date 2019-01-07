@@ -32,9 +32,9 @@ public class FindByIdNoticeServlet extends HttpServlet{
 		//获取公告id
 		String n_id = req.getParameter("id");
 		Notice notice = nService.findNoticeById(n_id);
-		
+		//放入request
 		req.setAttribute("n", notice);
-		
+		//转发
 		req.getRequestDispatcher("/admin/notices/edit.jsp").forward(req, resp);
 	}
 }

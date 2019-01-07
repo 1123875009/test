@@ -21,7 +21,7 @@ public class LogoutServlet extends HttpServlet {
 		session.invalidate();
 		// flag标识
 		String flag = request.getParameter("flag");
-		if (flag == null || flag.trim().isEmpty()) {
+		if (flag == null || flag.trim().isEmpty()) {//去掉字符串的两端空格判断是否为空
 			// 重定向到首页
 			response.sendRedirect(request.getContextPath() + "/index.jsp");
 		}

@@ -2,7 +2,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="p" uri="http://www.itcast.cn/tag"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
+<html>               <!-- 订单详情页面 -->
 <head>
 <title>电子书城</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/client/css/main.css" type="text/css" />
@@ -45,12 +45,13 @@
 											</table> 
 											<c:forEach items="${order.orderItems}" var="item" varStatus="vs">
 												<table width="100%" border="0" cellspacing="0">
-													<tr>
-														<td width="10%">${vs.count }</td>
+													<tr>      <!-- 商品条目的编号 --> 
+														<td width="10%">${vs.count}</td>
 														<td width="40%">${item.p.name}</td>
 														<td width="10%">${item.p.price }</td>
 														<td width="10%">${item.buynum }</td>
 														<td width="10%">${item.buynum*item.p.price }</td>
+														                   <!-- 每一项商品总价格 -->
 													</tr>
 												</table>
 											</c:forEach>
@@ -66,7 +67,7 @@
 												收货人：&nbsp;&nbsp;&nbsp;&nbsp;${order.receiverName }&nbsp;&nbsp;&nbsp;&nbsp;<br />
 												联系方式：${order.receiverPhone }&nbsp;&nbsp;&nbsp;&nbsp;
 											</p>
-											<hr>
+											<hr>  <!-- 如果尚未支付  点击支付-->
 											<c:if test="${order.paystate != 1 }">
 											<p style="text-align:right">
 												<a href="${pageContext.request.contextPath}/client/pay.jsp?id=${order.id}&money=${order.money}">

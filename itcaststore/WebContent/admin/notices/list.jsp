@@ -26,6 +26,7 @@
 				</tr>
 				<tr>
 					<td class="ta_01" align="right">
+					<!-- 添加公告 -->
 						<button type="button" id="add" name="add" value="&#28155;&#21152;" class="button_add" onclick="addNotice()">
 							&#28155;&#21152;
 						</button>
@@ -45,6 +46,7 @@
 								<td width="8%" align="center">编辑</td>
 								<td width="8%" align="center">删除</td>
 							</tr>
+							<!-- 遍历公告列表 -->
 							<c:forEach items="${notices}" var="n">
 								<tr onmouseover="this.style.backgroundColor = 'white'" onmouseout="this.style.backgroundColor = '#F5FAFE';">
 									<td style="CURSOR: hand; HEIGHT: 22px" align="center"
@@ -56,11 +58,13 @@
 									<td style="CURSOR: hand; HEIGHT: 22px" align="center"
 										width="8%">${n.n_time }</td>
 									<td align="center" style="HEIGHT: 22px" width="7%">
+									<!-- 编辑公告 -->
 										<a href="${pageContext.request.contextPath}/manager/FindByIdNoticeServlet?id=${n.n_id}">
 											<img src="${pageContext.request.contextPath}/admin/images/i_edit.gif" border="0" style="CURSOR: hand"> 
 										</a>
 									</td>
 									<td align="center" style="HEIGHT: 22px" width="7%">
+									<!-- 删除公告 -->
 										<a href="${pageContext.request.contextPath}/manager/DeleteNoticeServlet?id=${n.n_id}">
 											<img src="${pageContext.request.contextPath}/admin/images/i_del.gif" width="16" height="16" border="0" style="CURSOR: hand">
 										</a>

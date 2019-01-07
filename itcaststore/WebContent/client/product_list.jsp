@@ -51,28 +51,32 @@
 									</tr>
 								</table>
 								<div class="pagination">
-									<ul>
+									<ul>   <!-- 如果当前页不是第一页，那么 “上一页”可以被点击-->
 										<c:if test="${bean.currentPage!=1}">
 											<li class="disablepage_p">
 												<a class="disablepage_a" href="${pageContext.request.contextPath}/showProductByPage?currentPage=${bean.currentPage-1}&category=${bean.category}"></a>
 											</li>
 										</c:if>
+										<!-- 当前为第一页，那么”上一页“是不可以被点击的 -->
 										<c:if test="${bean.currentPage==1}">
 											<li class="disablepage_p2"></li>
-										</c:if>
+										</c:if> <!-- 循环次数放入变量 pagenum中 -->
 										<c:forEach begin="1" end="${bean.totalPage}" var="pageNum">
+											<!-- 得到当前页面，显示出当前的页码，当时无法点击-->
 											<c:if test="${pageNum==bean.currentPage}">
 												<li class="currentpage">${pageNum }</li>
 											</c:if>
+											<!-- 如果不是当前页的页码可以显示并点击 -->
 											<c:if test="${pageNum!=bean.currentPage}">
 												<li><a href="${pageContext.request.contextPath}/showProductByPage?currentPage=${pageNum}&category=${bean.category}">${pageNum}</a>
 												</li>
 											</c:if>
 										</c:forEach>
+										<!-- 当前页是最后一页，“下一页”不可被点击 -->
 
 										<c:if test="${bean.currentPage==bean.totalPage||bean.totalPage==0}">
 											<li class="disablepage_n2"></li>
-										</c:if>
+										</c:if><!-- 当前页不是最后一页，“下一页“可被点击 -->
 										<c:if test="${bean.currentPage!=bean.totalPage&&bean.totalPage!=0}">
 											<li class="disablepage_n">
 												<a class="disablepage_a" href="${pageContext.request.contextPath}/showProductByPage?currentPage=${bean.currentPage+1}&category=${bean.category}"></a>

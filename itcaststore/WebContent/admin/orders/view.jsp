@@ -54,6 +54,7 @@
 						<td width="7%" align="center">商品类别</td>
 						<td width="31%" align="center">商品描述</td>
 					</tr>
+					<!-- 循环输出订单子项 -->
 					<c:forEach items="${order.orderItems}" var="item" varStatus="vs">
 						<tr style="FONT-WEIGHT: bold; FONT-SIZE: 12pt; HEIGHT: 25px; BACKGROUND-COLOR: #eeeeee">
 							<td align="center" width="7%">${vs.count }</td>

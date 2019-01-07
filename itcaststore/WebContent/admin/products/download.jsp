@@ -8,7 +8,7 @@
 	<script language="javascript" src="${pageContext.request.contextPath}/admin/js/public.js"></script>
 </head>
 <body>
-	<br />
+	<br />  <!-- 将表单提交到downloadServlet -->
 	<form id="Form1" name="Form1" action="${pageContext.request.contextPath}/download" method="post">
 		<table cellSpacing="1" cellPadding="0" width="100%" align="center" bgColor="#f5fafe" border="0">
 			<tbody>

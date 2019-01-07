@@ -27,12 +27,12 @@ public class FindProductByIdServlet extends HttpServlet {
 		try {
 			// 调用service层方法，通过id查找商品
 			Product p = service.findProductById(id);
-			request.setAttribute("p", p);
+			request.setAttribute("p", p); //找到商品并放入request中
 			// 普通用户默认不传递type值，会跳转到info.jsp页面
 			if (type == null) {
 				request.getRequestDispatcher("/client/info.jsp").forward(request,response);
 				return;
-			}						
+			}			//为超级用户时，转到edit页面			
 			request.getRequestDispatcher("/admin/products/edit.jsp").forward(request, response);
 			return;
 		} catch (FindProductByIdException e) {

@@ -27,7 +27,7 @@ public class ShowIndexServlet extends HttpServlet{
 		//查询最近一条公告，传递到index.jsp页面进行展示
 		NoticeService nService = new NoticeService();
 		Notice notice = nService.getRecentNotice();
-		req.setAttribute("n", notice);
+		req.setAttribute("n", notice); //将查询到的公告放入request中
 		
 		//查询本周热销的两条商品，传递到index.jsp页面进行展示
 		ProductService pService = new ProductService();
@@ -38,8 +38,7 @@ public class ShowIndexServlet extends HttpServlet{
 			}
 			System.out.println("---------------------");
 		}*/
-		req.setAttribute("pList", pList);
-		
+		req.setAttribute("pList", pList);//将查询到了商品列表放入request对象中
 		//请求转发
 		req.getRequestDispatcher("/client/index.jsp").forward(req, resp);
 	}

@@ -48,10 +48,8 @@ public class OrderItemDao {
 				List<OrderItem> items = new ArrayList<OrderItem>();
 				while (rs.next()) {
 					OrderItem item = new OrderItem();
-
 					item.setOrder(order);
 					item.setBuynum(rs.getInt("buynum"));
-
 					Product p = new Product();
 					p.setCategory(rs.getString("category"));
 					p.setId(rs.getString("id"));
@@ -61,7 +59,6 @@ public class OrderItemDao {
 					p.setPnum(rs.getInt("pnum"));
 					p.setPrice(rs.getDouble("price"));
 					item.setP(p);
-
 					items.add(item);
 				}
 

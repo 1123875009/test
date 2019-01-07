@@ -12,7 +12,7 @@
 		  </tr>
 		</table>
 		<table width="100%" border="0">
-			  <tr>
+			  <tr>     <!-- 点击链接，在mainFrame中显示内容 -->
 			  	<td><a href="${pageContext.request.contextPath}/listProduct" target="mainFrame" class="left_list">商品管理</a></td>
 			  </tr>
 			  <tr>

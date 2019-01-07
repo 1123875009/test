@@ -29,16 +29,16 @@ public class LoginServlet extends HttpServlet {
 			// 获取用户的角色，其中用户的角色分普通用户和超级用户两种
 			String role = user.getRole();
 			// 如果是超级用户，就进入到网上书城的后台管理系统；否则进入我的账户页面
-			if ("超级用户".equals(role)) {
+			if ("超级用户".equals(role)) {//重定向
 				response.sendRedirect(request.getContextPath() + "/admin/login/home.jsp");
 				return;
-			} else {
+			} else {//普通用户跳转到前台页面
 				response.sendRedirect(request.getContextPath() + "/client/myAccount.jsp");
 				return;
 			}
 		} catch (LoginException e) {
 			// 如果出现问题，将错误信息存储到request范围，并跳转回登录页面显示错误信息
-			e.printStackTrace();
+			e.printStackTrace();   //转发
 			request.setAttribute("register_message", e.getMessage());
 			request.getRequestDispatcher("/client/login.jsp").forward(request, response);
 			return;

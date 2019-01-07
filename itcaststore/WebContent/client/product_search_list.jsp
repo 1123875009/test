@@ -8,7 +8,7 @@
 	<%--导入css --%>
 	<link rel="stylesheet" href="client/css/main.css" type="text/css" />
 </head>
-
+<!-- 显示搜索或分类的商品 -->
 <body class="main">
 	<jsp:include page="head.jsp" />
 	<jsp:include page="menu_search.jsp" />
@@ -30,7 +30,8 @@
 								</div>
 
 								<table cellspacing="0" class="booklist">
-									<tr>
+									<tr>   
+									<!-- 遍历商品的列表 用p存储每一个商品对象 -->
 										<c:forEach items="${bean.ps}" var="p" varStatus="vs">
 											<td>
 												<div class="divbookpic">
@@ -55,30 +56,33 @@
 								</table> -->
 
 								<div class="pagination">
-									<ul>
+									<ul>    <!-- 当前的页码不为1 -->
 										<c:if test="${bean.currentPage!=1}">
 											<li class="nextPage">
 												<a href="${pageContext.request.contextPath}/MenuSearchSerlvet?currentPage=${bean.currentPage-1}&textfield=${bean.searchfield}">&lt;&lt;上一页</a>
 											</li>
-										</c:if>
+										</c:if>   <!-- 当前的页码为1，上一页的不能点击 -->
 										<c:if test="${bean.currentPage==1}">
 											<li class="disablepage">&lt;&lt;上一页</li>
 										</c:if>
+										<!-- 循环次数放入变量 pagenum中 -->
 										<c:forEach begin="1" end="${bean.totalPage}" var="pageNum">
-
+                                            <!-- 判断当前页是否是第几页  显示页码  且此页无链接 -->
 											<c:if test="${pageNum==bean.currentPage}">
 												<li class="currentpage">${pageNum }</li>
 											</c:if>
+											<!-- 不为当前页码的页面，显示页码可直接点击页号进行访问 -->
 											<c:if test="${pageNum!=bean.currentPage}">
 												<li><a href="${pageContext.request.contextPath}/MenuSearchSerlvet?currentPage=${pageNum}&textfield=${bean.searchfield}">${pageNum}</a>
 												</li>
 											</c:if>
 
 										</c:forEach>
-
+										<!-- 判断此页是否是最后一页 是则无法点击下一页-->
 										<c:if test="${bean.currentPage==bean.totalPage||bean.totalPage==0}">
 											<li class="disablepage">下一页 &gt;&gt;</li>
 										</c:if>
+										<!-- 不是则可点击下一页 ，且链接查询当前页的下一页面-->
 
 										<c:if test="${bean.currentPage!=bean.totalPage&&bean.totalPage!=0}">
 											<li class="nextpage">

@@ -33,7 +33,7 @@ public class DataSourceUtils {
 	public static void startTransaction() throws SQLException {
 		Connection con = getConnection();
 		if (con != null)
-			con.setAutoCommit(false);
+			con.setAutoCommit(false);//不自动提交
 	}
 	/**
 	 * 从ThreadLocal中释放并且关闭Connection,并结束事务
@@ -42,9 +42,9 @@ public class DataSourceUtils {
 	public static void releaseAndCloseConnection() throws SQLException {
 		Connection con = getConnection();
 		if (con != null) {
-			con.commit();
-			tl.remove();
-			con.close();
+			con.commit();//提交
+			tl.remove();//剔除连接
+			con.close();//关闭连接
 		}
 	}
 	/**
@@ -54,7 +54,7 @@ public class DataSourceUtils {
 	public static void rollback() throws SQLException {
 		Connection con = getConnection();
 		if (con != null) {
-			con.rollback();
+			con.rollback();//如果事务执行失败，进行回滚操作
 		}
 	}
 }
