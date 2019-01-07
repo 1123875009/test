@@ -1,13 +1,13 @@
 package cn.itcast.itcaststore.domain;
 
 public class Collection {
-	private int id;//收藏id
+	private String id; 
 	private int user_id;//用户
 	private String product_id;//商品
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public int getUser_id() {

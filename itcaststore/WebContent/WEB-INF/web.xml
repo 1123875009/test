@@ -307,4 +307,24 @@
     <servlet-name>AddCollectionServlet</servlet-name>
     <url-pattern>/AddCollection</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ConcelCollection</display-name>
+    <servlet-name>ConcelCollection</servlet-name>
+    <servlet-class>cn.itcast.itcaststore.web.servlet.client.ConcelCollection</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConcelCollection</servlet-name>
+    <url-pattern>/concelCollection</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FindCollectionByUserId</display-name>
+    <servlet-name>FindCollectionByUserId</servlet-name>
+    <servlet-class>cn.itcast.itcaststore.web.servlet.client.FindCollectionByUserId</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FindCollectionByUserId</servlet-name>
+    <url-pattern>/findCollectionByUserId</url-pattern>
+  </servlet-mapping>
 </web-app>

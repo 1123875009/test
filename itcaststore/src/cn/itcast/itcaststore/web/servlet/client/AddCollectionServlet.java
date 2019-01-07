@@ -1,6 +1,8 @@
 package cn.itcast.itcaststore.web.servlet.client;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -49,10 +51,13 @@ public class AddCollectionServlet extends HttpServlet {
 				User u=(User) session.getAttribute("user");
 				c.setProduct_id(id);
 				c.setUser_id(u.getId());
-				System.out.println(u.getId());
+				//System.out.println(u.getId());
 				service.addCollection(c);
-				session.setAttribute("collect", c);
-				response.sendRedirect(request.getContextPath() + "/client/collectProduct.jsp");
+				List<Object[]> cList=service.getCollections(u.getId());
+				request.setAttribute("cList", cList);//将查询到了商品列表放入request对象中
+				//请求转发
+				request.getRequestDispatcher("/client/collectProduct.jsp").forward(request, response);
+				//response.sendRedirect(request.getContextPath() + "/client/collectProduct.jsp");
 	}
 
 }

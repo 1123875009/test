@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@taglib prefix="p" uri="http://www.itcast.cn/tag"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -6,6 +7,7 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath }/client/css/main.css" type="text/css" />
 </head>
 <body class="main">
+
 	<jsp:include page="head.jsp" />
 	<jsp:include page="menu_search.jsp" />
 	<div id="divpagecontent">
@@ -33,6 +35,7 @@
 												<a href="${pageContext.request.contextPath}/addCart?id=${p.id}"><!-- 加入购物车并传递id -->
 							<!-- 商品添加 -->			<img src="${pageContext.request.contextPath }/client/images/buybutton.gif" border="0" width="100" height="25" /> 
 												</a>
+													<p:user/>
 							<!-- 商品收藏 -->		<a href="${pageContext.request.contextPath}/AddCollection?id=${p.id}">		
 													<img src="${pageContext.request.contextPath }/client/images/buybutton.gif" border="0" width="100" height="25" /> 
 												</a>
