@@ -308,7 +308,6 @@
     <url-pattern>/AddCollection</url-pattern>
   </servlet-mapping>
   <servlet>
-    <description></description>
     <display-name>ConcelCollection</display-name>
     <servlet-name>ConcelCollection</servlet-name>
     <servlet-class>cn.itcast.itcaststore.web.servlet.client.ConcelCollection</servlet-class>
@@ -318,7 +317,6 @@
     <url-pattern>/concelCollection</url-pattern>
   </servlet-mapping>
   <servlet>
-    <description></description>
     <display-name>FindCollectionByUserId</display-name>
     <servlet-name>FindCollectionByUserId</servlet-name>
     <servlet-class>cn.itcast.itcaststore.web.servlet.client.FindCollectionByUserId</servlet-class>
@@ -326,5 +324,14 @@
   <servlet-mapping>
     <servlet-name>FindCollectionByUserId</servlet-name>
     <url-pattern>/findCollectionByUserId</url-pattern>
+    </servlet-mapping>
+   <servlet>
+    <display-name>AutoplayServlet</display-name>
+    <servlet-name>AutoplayServlet</servlet-name>
+    <servlet-class>cn.itcast.itcaststore.web.servlet.manager.AutoplayServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AutoplayServlet</servlet-name>
+    <url-pattern>/AutoplayServlet</url-pattern>
   </servlet-mapping>
 </web-app>
