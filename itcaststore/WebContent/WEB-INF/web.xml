@@ -307,4 +307,14 @@
     <servlet-name>AddCollectionServlet</servlet-name>
     <url-pattern>/AddCollection</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AutoplayServlet</display-name>
+    <servlet-name>AutoplayServlet</servlet-name>
+    <servlet-class>cn.itcast.itcaststore.web.servlet.manager.AutoplayServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AutoplayServlet</servlet-name>
+    <url-pattern>/AutoplayServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
