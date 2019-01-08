@@ -324,8 +324,8 @@
   <servlet-mapping>
     <servlet-name>FindCollectionByUserId</servlet-name>
     <url-pattern>/findCollectionByUserId</url-pattern>
-    </servlet-mapping>
-   <servlet>
+  </servlet-mapping>
+  <servlet>
     <display-name>AutoplayServlet</display-name>
     <servlet-name>AutoplayServlet</servlet-name>
     <servlet-class>cn.itcast.itcaststore.web.servlet.manager.AutoplayServlet</servlet-class>
@@ -333,5 +333,15 @@
   <servlet-mapping>
     <servlet-name>AutoplayServlet</servlet-name>
     <url-pattern>/AutoplayServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ShowCollections</display-name>
+    <servlet-name>ShowCollections</servlet-name>
+    <servlet-class>cn.itcast.itcaststore.web.servlet.client.ShowCollections</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowCollections</servlet-name>
+    <url-pattern>/ShowCollections</url-pattern>
   </servlet-mapping>
 </web-app>

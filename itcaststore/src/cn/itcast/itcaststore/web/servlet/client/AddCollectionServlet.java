@@ -53,10 +53,13 @@ public class AddCollectionServlet extends HttpServlet {
 				c.setUser_id(u.getId());
 				//System.out.println(u.getId());
 				service.addCollection(c);
-				List<Object[]> cList=service.getCollections(u.getId());
-				request.setAttribute("cList", cList);//将查询到了商品列表放入request对象中
+				
+				
+				//List<Object[]> cList=service.getCollections(u.getId());
+				//request.setAttribute("cList", cList);//将查询到了商品列表放入request对象中
+				//session.setAttribute("cList", cList);
 				//请求转发
-				request.getRequestDispatcher("/client/collectProduct.jsp").forward(request, response);
+				request.getRequestDispatcher("/ShowCollections").forward(request, response);
 				//response.sendRedirect(request.getContextPath() + "/client/collectProduct.jsp");
 	}
 

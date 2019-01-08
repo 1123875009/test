@@ -1,0 +1,19 @@
+create table collection(
+id varchar(100),
+user_id int(11),
+product_id varchar(100),
+primary key(user_id,product_id),
+foreign key(user_id) references user(id),
+foreign key(product_id) references products(id)
+);
+商品名字，商品图片,price
+select distinct name,imgurl,price from products,collection,user where
+products.id=collection.product_id and collection.user_id=2 and user.id=collection.user_id;
+
+
+create table picture(
+id varchar(100) primary key,
+tile varchar(30),
+time varchar(18),
+imgurl varchar(100)
+);

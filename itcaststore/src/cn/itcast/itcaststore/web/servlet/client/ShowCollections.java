@@ -1,23 +1,27 @@
 package cn.itcast.itcaststore.web.servlet.client;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import cn.itcast.itcaststore.domain.User;
 import cn.itcast.itcaststore.service.CollectionService;
 
 /**
- * Servlet implementation class ConcelCollection
+ * Servlet implementation class ShowCollections
  */
-public class ConcelCollection extends HttpServlet {
+public class ShowCollections extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ConcelCollection() {
+    public ShowCollections() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,9 +40,13 @@ public class ConcelCollection extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		CollectionService service = new CollectionService();
-		String id = request.getParameter("id");//获取收藏的id
-		service.delConnectionById(id);
-		request.getRequestDispatcher("/ShowCollections").forward(request, response);
+		 HttpSession session = request.getSession();
+		String id = request.getParameter("id"); //得到商品编号
+		User u=(User) session.getAttribute("user");
+		List<Object[]> cList=service.getCollections(u.getId());
+		session.setAttribute("cList", cList);
+		response.sendRedirect(request.getContextPath() + "/client/collectProduct.jsp");
+		
 	}
 
 }

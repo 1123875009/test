@@ -18,9 +18,10 @@ public class CollectionDao {
 		QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
 		runner.update(sql,IdUtils.getUUID(),c.getUser_id(),c.getProduct_id());
 	}
+	
 	public List<Object[]> getCollections(int user_id) throws SQLException {
-		String sql = "SELECT distinct name,imgurl,"+
-                             "price,product_id"+
+		String sql = "SELECT name,imgurl,"+
+                             "price,product_id,collection.id"+
                      " FROM collection,user,products"+
                      " WHERE products.id=collection.product_id"+
                              " AND collection.user_id=user.id"+
@@ -28,11 +29,12 @@ public class CollectionDao {
 		QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
 		return runner.query(sql, new ArrayListHandler(),user_id);
 	}
+	
+	
+	
 	public void delCollectionById(String id) throws SQLException {
 		String sql="delete from collection where id=?";
-		
 		QueryRunner runner=new QueryRunner();
-		
 		runner.update(DataSourceUtils.getConnection(),sql,id);
 	}
 

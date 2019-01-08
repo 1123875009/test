@@ -76,7 +76,7 @@
 													<tr>
 														<td width="20%">${vs.count}</td>
 														<td width="30%">	
-														<a href="${pageContext.request.contextPath}/findProductById?id=${entry[4]}"><!-- 传递订单的编号 -->
+														<a href="${pageContext.request.contextPath}/findProductById?id=${entry[3]}"><!-- 传递product的编号 -->
 															<img src="${pageContext.request.contextPath}${entry[1]}" width="115" height="129" border="0" /> 
 														</a>
 														</td>
@@ -84,7 +84,7 @@
 														<td width="10%">${entry[2]}</td>
 														<td width="10%">
 														    <!-- 取消收藏商品 -->
-															<a href="${pageContext.request.contextPath}/concelCollection?id=${entry[3]}&count=0"
+															<a href="${pageContext.request.contextPath}/concelCollection?id=${entry[4]}"
 															style="color:#FF0000; font-weight:bold" onclick="javascript:return cart_del()">X</a>
 														</td>
 													</tr>

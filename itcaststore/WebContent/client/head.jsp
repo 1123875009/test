@@ -25,7 +25,7 @@ function confirm_logout() {
 				  <a href="${pageContext.request.contextPath}/client/cart.jsp">购物车</a> 
 				| <a href="#">帮助中心</a> 
 				| <a href="${pageContext.request.contextPath}/myAccount">我的帐户</a>
-				|<a href="${pageContext.request.contextPath}/AddCollection">我的收藏</a>
+				|<a href="${pageContext.request.contextPath}/ShowCollections">我的收藏</a>
 				<% 
 				User user = (User) request.getSession().getAttribute("user");
 				if(null == user){
