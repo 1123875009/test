@@ -23,7 +23,7 @@ function confirm_logout() {
 				<img src="${pageContext.request.contextPath}/client/images/cart.gif" width="26" height="23" style="margin-bottom:-4px" />
 				   &nbsp;
 				  <a href="${pageContext.request.contextPath}/client/cart.jsp">购物车</a> 
-				| <a href="#">帮助中心</a> 
+				| <a href="${pageContext.request.contextPath}/client/helpcenter.jsp">帮助中心</a> 
 				| <a href="${pageContext.request.contextPath}/myAccount">我的帐户</a>
 				|<a href="${pageContext.request.contextPath}/ShowCollections">我的收藏</a>
 				<% 
