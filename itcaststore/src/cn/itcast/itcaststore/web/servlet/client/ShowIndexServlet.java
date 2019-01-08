@@ -7,8 +7,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import cn.itcast.itcaststore.domain.Notice;
+import cn.itcast.itcaststore.domain.Picture;
 import cn.itcast.itcaststore.service.NoticeService;
+import cn.itcast.itcaststore.service.PictureService;
 import cn.itcast.itcaststore.service.ProductService;
 /**
  *	前台页面展示的servlet 
@@ -40,6 +44,11 @@ public class ShowIndexServlet extends HttpServlet{
 		}*/
 		req.setAttribute("pList", pList);//将查询到了商品列表放入request对象中
 		//请求转发
+		
+		PictureService service = new PictureService();
+		List<Picture> pictures = service.showPictures();
+		req.setAttribute("showpic", pictures);
+		
 		req.getRequestDispatcher("/client/index.jsp").forward(req, resp);
 	}
 }

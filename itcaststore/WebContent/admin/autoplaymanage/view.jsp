@@ -47,7 +47,7 @@
 								<td width="8%" align="center">编辑</td>
 								<td width="8%" align="center">删除</td>
 							</tr>
-							<!-- 遍历公告列表 -->
+							<!-- 遍历图片列表 -->
 							<c:forEach items="${pictures}" var="n">
 								<tr onmouseover="this.style.backgroundColor = 'white'" onmouseout="this.style.backgroundColor = '#F5FAFE';">
 									<td style="CURSOR: hand; HEIGHT: 22px" align="center"
@@ -56,18 +56,18 @@
 										width="18%">${n.title}</td>
 									<td style="CURSOR: hand; HEIGHT: 22px" align="center"
 										width="8%">
-										<img src="${pageContext.request.contextPath}${n.imgurl}" width="16" height="16" border="0" style="CURSOR: hand"></td>
+										<img width="200px" height="120px" src="${pageContext.request.contextPath}${n.imgurl}" width="16" height="16" border="0" style="CURSOR: hand"></td>
 									<td style="CURSOR: hand; HEIGHT: 22px" align="center"
 										width="8%">${n.time}</td>
 									<td align="center" style="HEIGHT: 22px" width="7%">
-									<!-- 编辑公告 -->
-										<a href="${pageContext.request.contextPath}/manager/FindByPictureServlet?id=${n.id}">
+									<!-- 编辑图片 -->
+										<a href="${pageContext.request.contextPath}/FindByIdPictureServlet?id=${n.id}">
 											<img src="${pageContext.request.contextPath}/admin/images/i_edit.gif" border="0" style="CURSOR: hand"> 
 										</a>
 									</td>
 									<td align="center" style="HEIGHT: 22px" width="7%">
-									<!-- 删除公告 -->
-										<a href="${pageContext.request.contextPath}/manager/DeleteNoticeServlet?id=${n.n_id}">
+									<!-- 删除图片 -->
+										<a href="${pageContext.request.contextPath}/DeletePictureServlet?id=${n.id}">
 											<img src="${pageContext.request.contextPath}/admin/images/i_del.gif" width="16" height="16" border="0" style="CURSOR: hand">
 										</a>
 									</td>

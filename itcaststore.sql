@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50155
 File Encoding         : 65001
 
-Date: 2019-01-08 09:51:12
+Date: 2019-01-08 17:06:06
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -32,6 +32,7 @@ CREATE TABLE `collection` (
 -- Records of collection
 -- ----------------------------
 INSERT INTO `collection` VALUES ('e31d898f-4590-40cd-b465-f3dd8d540789', '1', '8c19d2e2-1020-425d-aeeb-56d3c1bc0a81');
+INSERT INTO `collection` VALUES ('d60a74f5-dae9-43f2-b7c0-20b37fa4218b', '1', 'adc06981-0dc9-4006-b763-e6413ee93ac1');
 INSERT INTO `collection` VALUES ('864b5ea2-7513-4182-b542-c87f70483f19', '2', '67a44950-935a-4dac-953d-515fd92d8174');
 INSERT INTO `collection` VALUES ('8eaee7dd-2935-43b9-b19b-6e181c2f39db', '2', 'bf66a00c-4a78-458b-93c8-08896ee14976');
 INSERT INTO `collection` VALUES ('aa8c30bc-0680-4ebe-9e2f-5f4bfe8c37a0', '2', 'c85d68d3-5758-494e-8dcf-f4f84d852949');
@@ -115,8 +116,8 @@ INSERT INTO `orders` VALUES ('d88d75cd-15e3-4622-801d-4cad902aeaa1', '25', '北�
 DROP TABLE IF EXISTS `picture`;
 CREATE TABLE `picture` (
   `id` varchar(100) NOT NULL,
-  `tile` varchar(30) DEFAULT NULL,
-  `time` varchar(18) DEFAULT NULL,
+  `title` varchar(30) DEFAULT NULL,
+  `time` timestamp NULL DEFAULT NULL,
   `imgurl` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -124,6 +125,11 @@ CREATE TABLE `picture` (
 -- ----------------------------
 -- Records of picture
 -- ----------------------------
+INSERT INTO `picture` VALUES ('1611f57b-081f-4c53-b901-724b8a4685b5', '灯塔', '2019-01-08 16:42:54', '/productImg/5/8/401c2325-21c2-43ed-8467-082ded39513e.jpg');
+INSERT INTO `picture` VALUES ('29e5a451-0ede-4e85-a9f7-825c3b7540cf', '八仙花', '2019-01-08 16:43:39', '/productImg/13/1/5a5e27ca-3ade-4296-82b3-02e8a12aa4ad.jpg');
+INSERT INTO `picture` VALUES ('2d5bbef9-0311-4b17-b8be-762e05c4cb32', '水母', '2019-01-08 16:43:04', '/productImg/7/13/729f42f5-2fae-45bb-a48d-d63d81a15251.jpg');
+INSERT INTO `picture` VALUES ('627c11ad-9006-4be3-871f-1f14dfd293bf', '沙漠', '2019-01-08 16:43:17', '/productImg/2/11/b834f342-6e00-44ae-bca0-033c8177646d.jpg');
+INSERT INTO `picture` VALUES ('8f1a4549-3870-4a1b-8fc7-afbef228ce32', '企鹅', '2019-01-08 16:43:26', '/productImg/5/10/d9412967-96a3-4796-8f90-364b45b3d91e.jpg');
 
 -- ----------------------------
 -- Table structure for `products`

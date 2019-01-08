@@ -326,13 +326,12 @@
     <url-pattern>/findCollectionByUserId</url-pattern>
   </servlet-mapping>
   <servlet>
-    <display-name>AutoplayServlet</display-name>
     <servlet-name>AutoplayServlet</servlet-name>
     <servlet-class>cn.itcast.itcaststore.web.servlet.manager.AutoplayServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AutoplayServlet</servlet-name>
-    <url-pattern>/manager/autoplay</url-pattern>
+    <url-pattern>/manager/autoplayServlet</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -362,6 +361,44 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>AddPictureServlet</servlet-name>
-    <url-pattern>/AddPictureServlet</url-pattern>
+    <url-pattern>/manage/AddPicture</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DeletePictureServlet</servlet-name>
+    <servlet-class>cn.itcast.itcaststore.web.servlet.manager.DeletePictureServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeletePictureServlet</servlet-name>
+    <url-pattern>/DeletePictureServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FindByPictureServlet</display-name>
+    <servlet-name>FindByPictureServlet</servlet-name>
+    <servlet-class>cn.itcast.itcaststore.web.servlet.manager.FindByPictureServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FindByPictureServlet</servlet-name>
+    <url-pattern>/FindByPictureServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EditPictureServlet</display-name>
+    <servlet-name>EditPictureServlet</servlet-name>
+    <servlet-class>cn.itcast.itcaststore.web.servlet.manager.EditPictureServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditPictureServlet</servlet-name>
+    <url-pattern>/EditPictureServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ShowRollPictures</display-name>
+    <servlet-name>ShowRollPictures</servlet-name>
+    <servlet-class>cn.itcast.itcaststore.web.servlet.client.ShowRollPictures</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowRollPictures</servlet-name>
+    <url-pattern>/ShowRollPictures</url-pattern>
   </servlet-mapping>
 </web-app>
