@@ -39,11 +39,8 @@ public class FindByIdPictureServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		String id = request.getParameter("id");
 		PictureService service = new PictureService();
-		Picture p = new Picture();
-		p.setId(id);
 		service.findPictureById(id);
-		request.setAttribute("picture",p);
-	    p= service.findPictureById(id);
+	    Picture p= service.findPictureById(id);
 		request.setAttribute("pic", p);
 
 		//转发
