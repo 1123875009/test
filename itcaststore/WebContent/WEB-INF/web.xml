@@ -364,4 +364,33 @@
     <servlet-name>AddPictureServlet</servlet-name>
     <url-pattern>/AddPictureServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateMsgboardServlet</display-name>
+    <servlet-name>UpdateMsgboardServlet</servlet-name>
+    <servlet-class>cn.itcast.itcaststore.web.servlet.manager.UpdateMsgboardServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateMsgboardServlet</servlet-name>
+    <url-pattern>/UpdateMsgboard</url-pattern>
+  </servlet-mapping>
+  <filter>
+    <display-name>HelpCenterFilter</display-name>
+    <filter-name>HelpCenterFilter</filter-name>
+    <filter-class>cn.itcast.itcaststore.web.filter.HelpCenterFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>HelpCenterFilter</filter-name>
+    <url-pattern>/EnterMsgboard</url-pattern>
+  </filter-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EnterMsgboard</display-name>
+    <servlet-name>EnterMsgboard</servlet-name>
+    <servlet-class>cn.itcast.itcaststore.web.servlet.client.EnterMsgboard</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EnterMsgboard</servlet-name>
+    <url-pattern>/EnterMsgboard</url-pattern>
+  </servlet-mapping>
 </web-app>

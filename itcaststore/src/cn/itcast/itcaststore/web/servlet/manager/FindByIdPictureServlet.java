@@ -42,7 +42,7 @@ public class FindByIdPictureServlet extends HttpServlet {
 		Picture p = new Picture();
 		p.setId(id);
 		service.findPictureById(id);
-		request.setAttribute("p",Picture);
+		request.setAttribute("picture",p);
 		//转发
 		request.getRequestDispatcher("/admin/autoplaymanage/edit.jsp").forward(request, response);
 	}
