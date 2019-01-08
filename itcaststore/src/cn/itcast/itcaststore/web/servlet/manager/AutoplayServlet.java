@@ -46,8 +46,8 @@ public class AutoplayServlet extends HttpServlet {
 		//request.setAttribute("pictures", pictures);
 		HttpSession session = request.getSession();
 		session.setAttribute("pictures", pictures);
-		//request.getRequestDispatcher("/admin/autoplaymanage/view.jsp").forward(request, response);
-		response.sendRedirect(request.getContextPath() + "/admin/autoplaymanage/view.jsp");
+		request.getRequestDispatcher("/admin/autoplaymanage/view.jsp").forward(request, response);
+		//response.sendRedirect(request.getContextPath() + "/admin/autoplaymanage/view.jsp");
 		
 	}
 

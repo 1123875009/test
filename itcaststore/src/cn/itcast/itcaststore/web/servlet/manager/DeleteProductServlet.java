@@ -44,9 +44,9 @@ public class DeleteProductServlet extends HttpServlet {
 		// 获取请求参数，产品id
 		String id = request.getParameter("id");
 		ProductService service = new ProductService();
-		// 调用service完成添加商品操作
+		// 调用service完成删除商品操作
 		service.deleteProduct(id);
-		response.sendRedirect(request.getContextPath() + "/listProduct");
+		response.sendRedirect(request.getContextPath() + "/autoplay");
 		return;
 	}
 
