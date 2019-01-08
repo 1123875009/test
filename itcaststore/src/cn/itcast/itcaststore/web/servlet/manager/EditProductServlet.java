@@ -115,7 +115,7 @@ public class EditProductServlet extends HttpServlet {
 
 		// 调用service完成修改商品操作
 		service.editProduct(p);
-		response.sendRedirect(request.getContextPath() + "/listProduct");
+		response.sendRedirect(request.getContextPath() + "/manage/autoplay");
 		return;
 
 	}

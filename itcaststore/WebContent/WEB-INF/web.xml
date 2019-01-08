@@ -332,7 +332,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>AutoplayServlet</servlet-name>
-    <url-pattern>/AutoplayServlet</url-pattern>
+    <url-pattern>/manager/autoplay</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -343,5 +343,25 @@
   <servlet-mapping>
     <servlet-name>ShowCollections</servlet-name>
     <url-pattern>/ShowCollections</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FindByIdPictureServlet</display-name>
+    <servlet-name>FindByIdPictureServlet</servlet-name>
+    <servlet-class>cn.itcast.itcaststore.web.servlet.manager.FindByIdPictureServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FindByIdPictureServlet</servlet-name>
+    <url-pattern>/FindByIdPictureServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddPictureServlet</display-name>
+    <servlet-name>AddPictureServlet</servlet-name>
+    <servlet-class>cn.itcast.itcaststore.web.servlet.manager.AddPictureServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddPictureServlet</servlet-name>
+    <url-pattern>/AddPictureServlet</url-pattern>
   </servlet-mapping>
 </web-app>

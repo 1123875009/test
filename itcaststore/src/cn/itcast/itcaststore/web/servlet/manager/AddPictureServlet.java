@@ -1,13 +1,13 @@
 package cn.itcast.itcaststore.web.servlet.manager;
 
 import java.io.IOException;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import cn.itcast.itcaststore.domain.Notice;
 import cn.itcast.itcaststore.domain.Picture;
@@ -15,15 +15,15 @@ import cn.itcast.itcaststore.service.NoticeService;
 import cn.itcast.itcaststore.service.PictureService;
 
 /**
- * Servlet implementation class AutoplayServlet
+ * Servlet implementation class AddPictureServlet
  */
-public class AutoplayServlet extends HttpServlet {
+public class AddPictureServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AutoplayServlet() {
+    public AddPictureServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -42,13 +42,16 @@ public class AutoplayServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		PictureService service = new PictureService();
-		List<Picture> pictures = service.getAllPictures();
-		//request.setAttribute("pictures", pictures);
-		HttpSession session = request.getSession();
-		session.setAttribute("pictures", pictures);
-		//request.getRequestDispatcher("/admin/autoplaymanage/view.jsp").forward(request, response);
-		response.sendRedirect(request.getContextPath() + "/admin/autoplaymanage/view.jsp");
-		
+		Picture p = new Picture();
+		String title = request.getParameter("title");
+		//将当前时间设为添加公告的时间
+		String t = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+		p.setTitle(p.getTitle());
+		//调用addNotice方法
+		service.addPicture(p);
+		//转发  相当于添加过后刷新页面，重新将公告查找一遍
+		request.getRequestDispatcher("/manager/autoplayServlet").forward(request, response);
+	
 	}
 
 }

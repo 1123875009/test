@@ -1,29 +1,25 @@
 package cn.itcast.itcaststore.web.servlet.manager;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import cn.itcast.itcaststore.domain.Notice;
+import cn.itcast.itcaststore.dao.PictureDao;
 import cn.itcast.itcaststore.domain.Picture;
-import cn.itcast.itcaststore.service.NoticeService;
 import cn.itcast.itcaststore.service.PictureService;
 
 /**
- * Servlet implementation class AutoplayServlet
+ * Servlet implementation class FindByIdPictureServlet
  */
-public class AutoplayServlet extends HttpServlet {
+public class FindByIdPictureServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AutoplayServlet() {
+    public FindByIdPictureServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,14 +37,14 @@ public class AutoplayServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String id = request.getParameter("id");
 		PictureService service = new PictureService();
-		List<Picture> pictures = service.getAllPictures();
-		//request.setAttribute("pictures", pictures);
-		HttpSession session = request.getSession();
-		session.setAttribute("pictures", pictures);
-		//request.getRequestDispatcher("/admin/autoplaymanage/view.jsp").forward(request, response);
-		response.sendRedirect(request.getContextPath() + "/admin/autoplaymanage/view.jsp");
-		
+		Picture p = new Picture();
+		p.setId(id);
+		service.findPictureById(id);
+		request.setAttribute("p",Picture);
+		//转发
+		request.getRequestDispatcher("/admin/autoplaymanage/edit.jsp").forward(request, response);
 	}
 
 }
