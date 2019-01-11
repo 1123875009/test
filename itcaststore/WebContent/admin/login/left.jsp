@@ -27,6 +27,9 @@
 			   <tr>
 			  	<td><a href="${pageContext.request.contextPath}/manager/autoplayServlet" target="mainFrame" class="left_list">轮播管理</a></td>
 			  </tr>
+			  <tr>
+			  	<td><a href="${pageContext.request.contextPath}/manager/ListMsgboard" target="mainFrame" class="left_list">留言管理</a></td>
+			  </tr>
 		</table>
 	</body>
 </html>

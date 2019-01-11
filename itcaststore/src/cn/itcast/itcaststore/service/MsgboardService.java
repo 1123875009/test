@@ -26,4 +26,25 @@ public void addMsgboard(Msgboard msgboard){
 		e.printStackTrace();
 	}
 }
+public void UpdateMsgboard(Msgboard msgboard) {
+	try {
+		msgBoardDao.UpdateMsgboard(msgboard);
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
 }
+public List<Msgboard> queryMsgboard(String name){
+     try {
+		return msgBoardDao.queryMsgboard(name);
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return null;
+}
+
+	
+}
+

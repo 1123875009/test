@@ -34,7 +34,7 @@ public class HelpCenterFilter implements Filter {
        if(user!=null)
 		chain.doFilter(request, response);
        else{
-       resp.sendRedirect(req.getContextPath() + "/client/login.jsp");
+       resp.sendRedirect(req.getContextPath() + "/client/error/clientprivilege.jsp");
        }
 	}
 

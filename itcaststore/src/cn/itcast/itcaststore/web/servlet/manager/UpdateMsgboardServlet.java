@@ -24,17 +24,15 @@ public class UpdateMsgboardServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String id=request.getParameter("reply");
+		int msg_id=Integer.parseInt(id);
+		String string=request.getParameter("replycontent");
 		Msgboard msgboard=new Msgboard();
+		msgboard.setMsg_id(msg_id);
+		msgboard.setMsgreply(string);
 		MsgboardService msgboardService=new MsgboardService();
-		User user=new User();
-		String msgcontent=request.getParameter("msgcontent");
-		String username=request.getParameter("username");
-		user.setUsername(username);
-		msgboard.setMsgcontent(msgcontent);
-		msgboard.setUser(user);
-	    msgboardService.addMsgboard(msgboard);
-		request.getRequestDispatcher("/client/helpcenter.jsp").forward(request, response);;
-		
+		msgboardService.UpdateMsgboard(msgboard);
+		request.getRequestDispatcher("/manager/ListMsgboard").forward(request, response);
 	}
 
 }

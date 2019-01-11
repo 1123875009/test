@@ -3,6 +3,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.ResultSetHandler;
 import org.apache.commons.dbutils.handlers.ArrayListHandler;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
@@ -217,4 +218,13 @@ public class ProductDao {
 		QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
 		runner.update(sql, id);
 	}
+	public List<Product> findBookByinf(String bookname) throws SQLException {
+		//根据名字模糊查询图书
+		String sql = "SELECT * FROM products WHERE name LIKE '%"+bookname+"%' LIMIT 5";
+		QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
+		//		//用于分页查询的数据
+//		Object obj = new Object[] { (currentPage - 1) * currentCount, currentCount };
+		return runner.query(sql, 
+				new BeanListHandler<Product>(Product.class));
+}
 }

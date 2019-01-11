@@ -6,7 +6,21 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<script src="http://cdn.bootcss.com/html5shiv/r29/html5.js"></script>
+<script type="text/javascript">
+<!--
+function checkresult(textName){
+	  
+		  var txtTemp = eval(textName).value;  
+		  if(txtTemp.length==0)
+		  {  
+		   alert("请输入留言！");
+		   eval("document.forms[0]." + textName).focus();
+		   return false;
+		  }  
+}
+-->
+
+</script>
 <title>留言板</title>
  <link rel="stylesheet" href="${pageContext.request.contextPath}/client/css/main.css" type="text/css" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -34,13 +48,33 @@ body {    margin: 0;
 .clearfix { *zoom: 1; }
 
 
+.mes-board {
+    margin: 1.875em 0;
+    border: 1px solid #aaa;
+    padding: 0 .7em;
+    background-color: #FFFACD;
+}
+.mes-board li { padding: .7em 0; }
+.mes-board li + li { border-top: 1px dashed #fff; }
+.mes-board h4 {
+    display: inline;
+    margin-right: 2px;
+    font-weight: 400;
+    color: #66f;
+}
+.mes-board small { color: #999; }
+.mes-board p {
+    padding: 1em 0;
+ 
+}
+
 
 /*Main*/
 .wrap {
     padding: 0;
     margin: 0 auto;
     width: 56.25em;
-background-color: #fcf;
+background-color:#afd1f3;
 }
 /*mes-send*/
 .mes-send {
@@ -94,8 +128,13 @@ background-color: #fcf;
 <%@include file="head.jsp"%>
 	<%@include file="menu_search.jsp" %>
 	 <div class="wrap">
+	 <div style="text-align:right; margin:5px 10px 5px 0px">
+						<a href="${pageContext.request.contextPath }/index.jsp">首页</a>
+						&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;&nbsp;留言板
+					</div>
 <section class="mes-send">
-    <form method="post" action="${pageContext.request.contextPath}/UpdateMsgboard">
+    <form method="post" action="${pageContext.request.contextPath}/AddMsgboardServlet">
+    
         <div class="form-group">
             <label for="user_name">用户名：</label>
             <input type="text" id="user_name" name="username" value="${sessionScope.user.username}" >
@@ -104,10 +143,54 @@ background-color: #fcf;
             <label for="user_mes">留言板：</label>
             <textarea id="user_mes" name="msgcontent"></textarea>
          </div>
-         <input class="btn_msg" type="submit" value="提 交">
+         <input class="btn_msg" type="submit" value="提 交" onclick="return checkresult(msgcontent)">
+         
     </form>
 </section>
+<%-- 
+<ul class="mes-board">
+<c:forEach items="${ms}" var="m">
+            <li class="mes-content">
+                <h4>${sessionScope.user.username}</h4>
+                <small>${m.msgdate}</small>
+                <p>${m.msgcontent}</p></br>
+                <p>${m.msgreply}</p>
+            </li>
+    </c:forEach>
+        </ul>
+--%>
+						<table cellspacing="0" cellpadding="1" rules="all"
+							bordercolor="gray" border="1" id="DataGrid1"
+							style="BORDER-RIGHT: gray 1px solid; BORDER-TOP: gray 1px solid; BORDER-LEFT: gray 1px solid; WIDTH: 100%; WORD-BREAK: break-all; BORDER-BOTTOM: gray 1px solid; BORDER-COLLAPSE: collapse; BACKGROUND-COLOR: #f5fafe; WORD-WRAP: break-word">
+							<tr style="FONT-WEIGHT: bold; FONT-SIZE: 12pt; HEIGHT: 25px; BACKGROUND-COLOR: #afd1f3">
+								
+								<td align="center" width="8%">留言人</td>
+								<td align="center" width="35%">留言内容</td>
+								<td align="center" width="12%">留言时间</td>
+								<td width="15%" align="center">回复内容</td>
+				
+							</tr>
+                            <!--  循环输出所有商品  每一个商品都赋值给变量p-->
+							<c:forEach items="${ms}" var="msg">
+								<tr onmouseover="this.style.backgroundColor = 'white'"
+									onmouseout="this.style.backgroundColor = '#F5FAFE';">
+									<td style="CURSOR: hand; HEIGHT: 22px" align="center" width="8%">${msg.username}</td>
+									<td style="CURSOR: hand; HEIGHT: 22px" align="center" width="35%">${msg.msgcontent}</td>
+									<td style="CURSOR: hand; HEIGHT: 22px" align="center" width="12%">${msg.msgdate }</td>
+									<td style="CURSOR: hand; HEIGHT: 22px" align="center" width="15%">
+									${msg.msgreply}
+									</td>
+									<%-- </td>
+									<td align="center" style="HEIGHT: 22px" width="7%">
+										<a href="${pageContext.request.contextPath}/deleteProduct?id=${p.id}" onclick="javascript:return p_del()">
+												<img src="${pageContext.request.contextPath}/admin/images/i_del.gif"
+												width="16" height="16" border="0" style="CURSOR: hand">
+										</a>
+									</td>--%>
+								</tr>
+							</c:forEach>
+						</table>
 </div>
-	
+	<%@include file="foot.jsp"%>
 </body>
 </html>

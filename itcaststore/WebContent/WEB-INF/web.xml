@@ -430,4 +430,34 @@
     <servlet-name>EnterMsgboard</servlet-name>
     <url-pattern>/EnterMsgboard</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ListMsgboardServlet</display-name>
+    <servlet-name>ListMsgboardServlet</servlet-name>
+    <servlet-class>cn.itcast.itcaststore.web.servlet.manager.ListMsgboardServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListMsgboardServlet</servlet-name>
+    <url-pattern>/manager/ListMsgboard</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddMsgboardServlet</display-name>
+    <servlet-name>AddMsgboardServlet</servlet-name>
+    <servlet-class>cn.itcast.itcaststore.web.servlet.manager.AddMsgboardServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddMsgboardServlet</servlet-name>
+    <url-pattern>/AddMsgboardServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TestServlet</display-name>
+    <servlet-name>TestServlet</servlet-name>
+    <servlet-class>cn.itcast.itcaststore.web.servlet.client.TestServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TestServlet</servlet-name>
+    <url-pattern>/Test</url-pattern>
+  </servlet-mapping>
 </web-app>

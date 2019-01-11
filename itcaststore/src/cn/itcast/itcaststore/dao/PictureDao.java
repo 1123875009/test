@@ -33,7 +33,7 @@ public class PictureDao {
 	
 	//后台系统，添加图片
 	public void addPicture(Picture p) throws SQLException {
-		String sql = "insert into picture(id,title,time,imgurl) values(?,?,?,?)";
+		String sql = "insert into picture(id,tile,time,imgurl) values(?,?,?,?)";
 		QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
 		runner.update(sql,p.getId(),p.getTitle(),p.getTime(),p.getImgurl());
 	}
