@@ -87,7 +87,7 @@ public class AddPictureServlet extends HttpServlet {
 				if (item.isFormField()) {
 				
 					// 不是上传组件
-					String fieldName = item.getFieldName(); // 获取组件名称
+ 					String fieldName = item.getFieldName(); // 获取组件名称
 					String title = item.getString("utf-8"); // 解决乱码问题
 					map.put(fieldName, title);
 				} else {
@@ -104,10 +104,9 @@ public class AddPictureServlet extends HttpServlet {
 					String randomDir = FileUploadUtils
 							.generateRandomDir(randomName);
 					// 图片存储父目录
-					String imgurl_parent = "/productImg" + randomDir;
+					String imgurl_parent = request.getContextPath()+"/autoplayImg" + randomDir;
 
-					File parentDir = new File(this.getServletContext()
-							.getRealPath(imgurl_parent));
+					File parentDir = new File(imgurl_parent);
 					// 验证目录是否存在，如果不存在，创建出来
 					if (!parentDir.exists()) {
 						parentDir.mkdirs();
@@ -117,8 +116,8 @@ public class AddPictureServlet extends HttpServlet {
 					map.put("imgurl", imgurl);
 
 					IOUtils.copy(item.getInputStream(), new FileOutputStream(
-							new File(parentDir, randomName)));
-					item.delete();
+							new File(imgurl)));
+					//item.delete();
 				}
 			}
 		} catch (FileUploadException e) {

@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib prefix="p" uri="http://www.itcast.cn/tag"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -35,10 +36,11 @@
 												<a href="${pageContext.request.contextPath}/addCart?id=${p.id}"><!-- 加入购物车并传递id -->
 							<!-- 商品添加 -->			<img src="${pageContext.request.contextPath }/client/images/buybutton.gif" border="0" width="100" height="25" /> 
 												</a>
-													<p:user/>
+												
 							<!-- 商品收藏 -->		<a href="${pageContext.request.contextPath}/AddCollection?id=${p.id}">		
-													<img src="${pageContext.request.contextPath }/client/images/buybutton.gif" border="0" width="100" height="25" /> 
+													<img src="${pageContext.request.contextPath }/client/images/save.png" border="0" width="100" height="25" /> 
 												</a>
+											
 											</div>
 										</td>
 										<td style="padding:20px 5px 5px 5px">
@@ -51,7 +53,9 @@
 												<b>内容简介：</b>
 											</p> ${p.description}
 										</td>
+										
 									</tr>
+									<tr><td>${massage}</td></tr>
 								</table>
 							</td>
 						</tr>

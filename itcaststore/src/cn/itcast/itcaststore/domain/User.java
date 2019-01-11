@@ -17,6 +17,7 @@ public class User implements Serializable {
 	private String role; // 用户角色
 	private int state; // 用户状态
 	private Date registTime;// 注册时间
+	private int score;//积分
 
 	public Date getRegistTime() {
 		return registTime;
@@ -106,12 +107,23 @@ public class User implements Serializable {
 		this.role = role;
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password="
-				+ password + ", gender=" + gender + ", email=" + email
-				+ ", telephone=" + telephone + ", introduce=" + introduce
-				+ ", role=" + role + "]";
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", gender=" + gender
+				+ ", email=" + email + ", telephone=" + telephone + ", introduce=" + introduce + ", activeCode="
+				+ activeCode + ", role=" + role + ", state=" + state + ", registTime=" + registTime + ", score=" + score
+				+ "]";
 	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+	
 
 }

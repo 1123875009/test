@@ -33,6 +33,13 @@
 						</tr>
 						<tr>
 							<td class="listtd">
+								<img src="${pageContext.request.contextPath }/client/images/icon2.png" width="15" height="10" />
+								&nbsp;&nbsp;&nbsp;&nbsp; 
+								<a href="${pageContext.request.contextPath}/FindScoreByUser">积分查询</a>
+							</td>
+						</tr>
+						<tr>
+							<td class="listtd">
 								<img src="${pageContext.request.contextPath }/client/images/icon3.png" width="15" height="10" />&nbsp;&nbsp;&nbsp;&nbsp; 
 								<a href="${pageContext.request.contextPath}/logout">用戶退出</a>
 							</td>
@@ -46,6 +53,8 @@
 						<a href="${pageContext.request.contextPath }/client/myAccount.jsp">&nbsp;我的帐户</a>
 						&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;&nbsp;用户信息修改
 					</div>
+					
+			<form action="${pageContext.request.contextPath}/IsCorrectUserInfoServlet" method="post">		
 					<table cellspacing="0" class="infocontent">
 						<tr>
 							<td>
@@ -60,28 +69,27 @@
 										<td style="padding-left:20px">${user.username }</td>
 										<td>&nbsp;</td>
 									</tr>
+									
+									<tr>
+										<td style="text-align:right">请输入原密码：</td>
+										<td><input type="password" class="textinput" name="beforepwd" value="${pwd}"/></td>
+										<td>${msg}</td>
+									</tr>
+									
 									<tr>
 										<td style="text-align:right">修改密码：</td>
-										<td><input type="password" class="textinput" /></td>
+										<td><input type="password" class="textinput" name="pwd2" /></td>
 										<td><font color="#999999">密码设置至少6位，请区分大小写</font></td>
 									</tr>
 									<tr>
 										<td style="text-align:right">重复密码：</td>
-										<td><input type="password" class="textinput" /></td>
-										<td>&nbsp;</td>
-									</tr>
-									<tr>
-										<td style="text-align:right">性别：</td>
-										<td colspan="2">&nbsp;&nbsp;                                   <!-- 判断原有的性别 原来的性别是什么就选中，不是则不选 -->
-											<input type="radio" name="radiobutton" value="radiobutton" ${user.gender=='男'?'checked':'' }/> 男
-											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											<input type="radio" name="radiobutton" value="radiobutton"  ${user.gender=='女'?'checked':'' }/> 女
-										</td>
+										<td><input type="password" class="textinput" name="pwd3" /></td>
+										<td>${isTrue}</td>
 									</tr>
 									<tr>
 										<td style="text-align:right">联系方式：</td>
 										<td colspan="2">
-											<input name="text2" type="text" value="${user.telephone}" class="textinput" />
+											<input name="phone" type="text" value="${user.telephone}" class="textinput" />
 										</td>                                       <!--默认直接显示原有的电话号码 -->
 									</tr>
 									<tr>
@@ -92,14 +100,13 @@
 								</table>
 								<p style="text-align:center">
 									<!-- <a href="success.html"> -->
-									<a href="${pageContext.request.contextPath}/ModifyPwd">
-										<img src="${pageContext.request.contextPath }/client/images/botton_gif_025.gif" border="0" width="140" height="35"/>
-									</a>
+									<input type="image" src="images/signup.gif" name="submit" border="0" width="140" height="35"/>
 								</p>
 								<p style="text-align:center">&nbsp;</p>
 							</td>
 						</tr>
 					</table>
+					</form>
 				</td>
 			</tr>
 		</table>

@@ -116,9 +116,25 @@
 												</a>
 												&nbsp;&nbsp;&nbsp;&nbsp;
                                                  <!--结账 -->
-												<a href="${pageContext.request.contextPath}/client/order.jsp">
-													<img src="${pageContext.request.contextPath}/client/images/gwc_buy.gif" border="0" />
-												</a>
+                                                
+                                                <c:if test="${cart!=null}" >
+													<a href="${pageContext.request.contextPath}/client/order.jsp">
+														<img   src="${pageContext.request.contextPath}/client/images/gwc_buy.gif" border="0" />
+													</a>
+												</c:if>
+												
+												<%-- <c:choose>
+												<c:when test="${not empty cart}">
+													<a href="${pageContext.request.contextPath}/client/order.jsp">
+														<input type="button" disabled="disabled" src="${pageContext.request.contextPath}/client/images/gwc_buy.gif" border="0" />
+													</a>
+												</c:when>
+												<c:otherwise>
+													<a href="${pageContext.request.contextPath}/client/order.jsp">
+														<input type="button" src="${pageContext.request.contextPath}/client/images/gwc_buy.gif" border="0" />
+													</a>
+												</c:otherwise>
+												</c:choose> --%>
 											</div>
 										</td>
 									</tr>

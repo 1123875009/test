@@ -44,21 +44,25 @@ public class AddCollectionServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// 1.得到商品id
-		       HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
+		User u = (User) session.getAttribute("user");
+		if(u==null){
+			response.sendRedirect(request.getContextPath() + "/client/login.jsp");
+			return;
+		}
 				String id = request.getParameter("id"); //得到商品编号
 				CollectionService service = new CollectionService();
 				Collection c = new Collection();
-				User u=(User) session.getAttribute("user");
 				c.setProduct_id(id);
 				c.setUser_id(u.getId());
 				//System.out.println(u.getId());
 				service.addCollection(c);
-				
-				
+
 				//List<Object[]> cList=service.getCollections(u.getId());
 				//request.setAttribute("cList", cList);//将查询到了商品列表放入request对象中
 				//session.setAttribute("cList", cList);
 				//请求转发
+				//request.getRequestDispatcher("/client/info.jsp").forward(request,response);
 				request.getRequestDispatcher("/ShowCollections").forward(request, response);
 				//response.sendRedirect(request.getContextPath() + "/client/collectProduct.jsp");
 	}

@@ -7,25 +7,6 @@
 <title>电子书城</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/client/css/main.css" type="text/css" />
 <script>
-    //当商品数量发生变化时触发该方法
-	function changeProductNum(count, totalCount, id) {
-		count = parseInt(count);
-		totalCount = parseInt(totalCount);
-		//如果数量为0，判断是否要删除商品
-		if (count == 0) {
-			var flag = window.confirm("确认删除商品吗?");
-
-			if (!flag) {
-				count = 1;
-			}
-		}
-		if (count > totalCount) {
-			alert("已达到商品最大购买量");
-			count = totalCount;
-		}
-		location.href = "${pageContext.request.contextPath}/changeCart?id="
-				+ id + "&count=" + count;
-	}
 	//删除购物车中的商品
 	function cart_del() {   
 	    var msg = "您确定要取消该商品的收藏吗？";   
@@ -97,11 +78,6 @@
 											    <!--继续购物 -->
 												<a href="${pageContext.request.contextPath}/showProductByPage">
 													<img src="images/gwc_jx.gif" border="0" />
-												</a>
-												&nbsp;&nbsp;&nbsp;&nbsp;
-                                                 <!--结账 -->
-												<a href="${pageContext.request.contextPath}/client/order.jsp">
-													<img src="${pageContext.request.contextPath}/client/images/gwc_buy.gif" border="0" />
 												</a>
 											</div>
 										</td>

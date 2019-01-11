@@ -29,5 +29,10 @@ public String getImgurl() {
 public void setImgurl(String imgurl) {
 	this.imgurl = imgurl;
 }
+@Override
+public String toString() {
+	return "Picture [id=" + id + ", title=" + title + ", time=" + time + ", imgurl=" + imgurl + "]";
+}
+
 
 }

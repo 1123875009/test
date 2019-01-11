@@ -5,8 +5,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import cn.itcast.itcaststore.domain.Collection;
 import cn.itcast.itcaststore.domain.Product;
+import cn.itcast.itcaststore.domain.User;
 import cn.itcast.itcaststore.exception.FindProductByIdException;
+import cn.itcast.itcaststore.service.CollectionService;
 import cn.itcast.itcaststore.service.ProductService;
 /**
  * 根据商品id查找指定商品信息的servlet
@@ -28,8 +33,22 @@ public class FindProductByIdServlet extends HttpServlet {
 			// 调用service层方法，通过id查找商品
 			Product p = service.findProductById(id);
 			request.setAttribute("p", p); //找到商品并放入request中
+			CollectionService s = new CollectionService();
+			Collection c = new Collection();
+			User u = (User) request.getSession().getAttribute("user");
 			// 普通用户默认不传递type值，会跳转到info.jsp页面
 			if (type == null) {
+			if(u==null){
+				request.getRequestDispatcher("/client/info.jsp").forward(request,response);
+			}
+				boolean flag = s.findCollection(u.getId(),id);
+				if(flag==true){
+					request.setAttribute("massage", "你已经收藏该商品");
+					System.out.println("已经收藏");
+				}else{
+					request.setAttribute("massage", "你还未收藏该商品");
+					System.out.println("未收藏");
+				}
 				request.getRequestDispatcher("/client/info.jsp").forward(request,response);
 				return;
 			}			//为超级用户时，转到edit页面			

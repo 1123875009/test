@@ -47,9 +47,13 @@ public class ProductDao {
 			return count.intValue();
 		}
 	}
+	
+
+	
 	// 获取当前页数据
 	public List<Product> findByPage(int currentPage, int currentCount,
 			String category) throws SQLException {
+		System.out.println("category:"+category);
 		// 要执行的sql语句
 		String sql = null;
 		// 参数
@@ -64,9 +68,12 @@ public class ProductDao {
 			obj = new Object[] { (currentPage - 1) * currentCount,
 					currentCount, };
 		}
+		System.out.println("sql语句:"+sql);
 		QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
-		return runner.query(sql, new BeanListHandler<Product>(Product.class),
+		 List<Product> list = runner.query(sql, new BeanListHandler<Product>(Product.class),
 				obj);
+		 System.out.println("查询的记过为："+list);
+		 return list;
 	}
 
 	// 根据id查找商品
@@ -101,10 +108,10 @@ public class ProductDao {
 
 	// 多条件查询
 	public List<Product> findProductByManyCondition(String id, String name,
-			String category, String minprice, String maxprice)
+			String category, String minprice, String maxprice,int currentCount,int currentPage)
 			throws SQLException {
 		List<Object> list = new ArrayList<Object>();
-		String sql = "select * from products where 1=1 ";
+		String sql = "select * from products where 1=1  ";
 
 		QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
               //id的输入框有值且不为空时
@@ -127,12 +134,67 @@ public class ProductDao {
 			list.add(minprice);
 			list.add(maxprice);
 		}
+		
+		sql+= " limit ?,?";
+		list.add((currentPage - 1) * currentCount);
+		list.add(currentCount);
 
 		Object[] params = list.toArray();
-
+		System.out.println("获取符合条件的全部商品："+sql);
 		return runner.query(sql, new BeanListHandler<Product>(Product.class),
 				params);    //返回多个对象商品 
 	}
+	
+	
+	
+	
+	
+	//根据多条件获取满足商品的总条数
+	public int findAllCountByCon(String id,String name,String minprice,String maxprice,String category) throws SQLException {
+		
+		QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
+		List<Object> list = new ArrayList<Object>();
+//
+//		if (!"全部商品".equals(category)) {
+//			sql += " where category=?";
+//
+//			Long count = (Long) runner
+//					.query(sql, new ScalarHandler(), category);
+//			return count.intValue();
+//		} else{
+//			Long count = (Long) runner.query(sql, new ScalarHandler());
+//
+//			return count.intValue();
+//		}
+		String sql = "select count(*) from products where 1=1";
+		if (id != null && id.trim().length() > 0) {
+			sql += " and id=?";
+			list.add(id); //将此字段加入where条件
+		}
+		if (name != null && name.trim().length() > 0) {
+			sql += " and name=?";
+			list.add(name);
+		}
+		if (category != null && category.trim().length() > 0) {
+			sql += " and category=?";
+			list.add(category);
+		}
+		if (minprice != null && maxprice != null
+				&& minprice.trim().length() > 0 && maxprice.trim().length() > 0) {
+			sql += " and price between ? and ?";
+			list.add(minprice);
+			list.add(maxprice);
+		}
+
+		Object[] params = list.toArray();
+		Long count = (Long) runner.query(sql, new ScalarHandler(),params);
+		System.out.println("执行分页的sql语句："+sql);
+		return count.intValue();
+	}
+	
+	
+
+	
 	// 修改商品信息
 	public void editProduct(Product p) throws SQLException {
 		//1.创建集合并将商品信息添加到集合中

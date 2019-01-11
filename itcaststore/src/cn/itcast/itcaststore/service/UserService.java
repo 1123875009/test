@@ -2,10 +2,16 @@ package cn.itcast.itcaststore.service;
 import java.sql.SQLException;
 import java.util.Date;
 import javax.security.auth.login.LoginException;
+
+import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
+
 import cn.itcast.itcaststore.dao.UserDao;
 import cn.itcast.itcaststore.domain.User;
 import cn.itcast.itcaststore.exception.ActiveUserException;
 import cn.itcast.itcaststore.exception.RegisterException;
+import cn.itcast.itcaststore.utils.DataSourceUtils;
+import cn.itcast.itcaststore.utils.MD5Util;
 import cn.itcast.itcaststore.utils.MailUtils;
 
 public class UserService {
@@ -14,6 +20,8 @@ public class UserService {
 	public void register(User user) throws RegisterException {
 		// 调用dao完成注册操作
 		try {
+			String pwd=MD5Util.MD5(user.getPassword());
+			user.setPassword(pwd);
 			dao.addUser(user);//将用户插入表中
 			// 发送激活邮件
 			String emailMsg = "感谢您注册网上书城，点击"
@@ -52,8 +60,9 @@ public class UserService {
 	// 登录操作
 	public User login(String username, String password) throws LoginException {
 		try {
+			String pwd = MD5Util.JM(MD5Util.KL(MD5Util.MD5(password)));
 			//根据登录时表单输入的用户名和密码，查找用户
-			User user = dao.findUserByUsernameAndPassword(username, password);
+			User user = dao.findUserByUsernameAndPassword(username, pwd);
 			//如果找到，还需要确定用户是否为激活用户
 			if (user != null) {
 				// 只有是激活才能登录成功，否则提示“用户未激活”
@@ -68,4 +77,40 @@ public class UserService {
 			throw new LoginException("登录失败");
 		}
 	}
+	public void changeScore(User u){
+		try {
+			dao.changeScore(u);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		}
+	}
+	public User findUserByUsernameAndPassword(String name, String password){
+		try {
+			//String p = MD5Util.MD5(password);
+			String p=MD5Util.MD5(password);
+			System.out.println("加密后密码："+p);
+			User u = dao.findUserByUsernameAndPassword(name,p);
+			return u;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}//sql，返回的user对象，两个占位符的参数
+	
+	public void changePassword(User u){
+		try {
+			String pwd = u.getPassword();
+			String p = MD5Util.MD5(pwd);
+			System.out.println("修改后的密码加密为"+p);
+			u.setPassword(p);
+			dao.changePassword(u);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 }

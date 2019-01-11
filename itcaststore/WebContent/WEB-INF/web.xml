@@ -421,8 +421,6 @@
     <url-pattern>/EnterMsgboard</url-pattern>
   </filter-mapping>
   <servlet>
-    <description></description>
-    <display-name>EnterMsgboard</display-name>
     <servlet-name>EnterMsgboard</servlet-name>
     <servlet-class>cn.itcast.itcaststore.web.servlet.client.EnterMsgboard</servlet-class>
   </servlet>
@@ -431,7 +429,7 @@
     <url-pattern>/EnterMsgboard</url-pattern>
   </servlet-mapping>
   <servlet>
-    <description></description>
+
     <display-name>ListMsgboardServlet</display-name>
     <servlet-name>ListMsgboardServlet</servlet-name>
     <servlet-class>cn.itcast.itcaststore.web.servlet.manager.ListMsgboardServlet</servlet-class>
@@ -459,5 +457,43 @@
   <servlet-mapping>
     <servlet-name>TestServlet</servlet-name>
     <url-pattern>/Test</url-pattern>
+    </servlet-mapping>
+   <servlet>
+    <servlet-name>FindScoreByUser</servlet-name>
+    <servlet-class>cn.itcast.itcaststore.web.servlet.client.FindScoreByUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FindScoreByUser</servlet-name>
+    <url-pattern>/FindScoreByUser</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ChangeUserInfoServlet</display-name>
+    <servlet-name>ChangeUserInfoServlet</servlet-name>
+    <servlet-class>cn.itcast.itcaststore.web.servlet.client.ChangeUserInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChangeUserInfoServlet</servlet-name>
+    <url-pattern>/ChangeUserInfoServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>IsCorrectUserInfoServlet</display-name>
+    <servlet-name>IsCorrectUserInfoServlet</servlet-name>
+    <servlet-class>cn.itcast.itcaststore.web.servlet.client.IsCorrectUserInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>IsCorrectUserInfoServlet</servlet-name>
+    <url-pattern>/IsCorrectUserInfoServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CleanCarServlet</display-name>
+    <servlet-name>CleanCarServlet</servlet-name>
+    <servlet-class>cn.itcast.itcaststore.web.servlet.client.CleanCarServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CleanCarServlet</servlet-name>
+    <url-pattern>/CleanCarServlet</url-pattern>
   </servlet-mapping>
 </web-app>

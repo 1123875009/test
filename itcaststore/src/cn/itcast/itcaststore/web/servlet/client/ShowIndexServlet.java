@@ -7,8 +7,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import cn.itcast.itcaststore.domain.Notice;
 import cn.itcast.itcaststore.domain.Picture;
 import cn.itcast.itcaststore.service.NoticeService;
@@ -47,6 +45,7 @@ public class ShowIndexServlet extends HttpServlet{
 		
 		PictureService service = new PictureService();
 		List<Picture> pictures = service.showPictures();
+		System.out.println(pictures);
 		req.setAttribute("showpic", pictures);
 		
 		req.getRequestDispatcher("/client/index.jsp").forward(req, resp);

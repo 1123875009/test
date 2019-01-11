@@ -222,4 +222,9 @@ public class OrderDao {
 		QueryRunner runner = new QueryRunner();		
 		runner.update(DataSourceUtils.getConnection(),sql,id);		
 	}
+	
+	/*public int getScores(String id){
+		
+	}*/
+	
 }

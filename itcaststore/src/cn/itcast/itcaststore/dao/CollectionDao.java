@@ -5,9 +5,11 @@ import java.util.List;
 
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.ArrayListHandler;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 
 import cn.itcast.itcaststore.domain.Collection;
 import cn.itcast.itcaststore.domain.Notice;
+import cn.itcast.itcaststore.domain.User;
 import cn.itcast.itcaststore.utils.DataSourceUtils;
 import cn.itcast.itcaststore.utils.IdUtils;
 
@@ -37,6 +39,11 @@ public class CollectionDao {
 		QueryRunner runner=new QueryRunner();
 		runner.update(DataSourceUtils.getConnection(),sql,id);
 	}
-
+	
+	public Collection findCollection(int uid,String pid) throws SQLException{
+		String sql="select * from collection where user_id=? and product_id=?";
+		QueryRunner runner=new QueryRunner(DataSourceUtils.getDataSource());
+		return runner.query(sql, new BeanHandler<Collection>(Collection.class),uid,pid);
+	}
 
 }

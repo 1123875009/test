@@ -13,7 +13,7 @@
 		</table>
 		<table width="100%" border="0">
 			  <tr>     <!-- 点击链接，在mainFrame中显示内容 -->
-			  	<td><a href="${pageContext.request.contextPath}/listProduct" target="mainFrame" class="left_list">商品管理</a></td>
+			  	<td><a href="${pageContext.request.contextPath}/findProductByManyCondition?category=${bean.category}" target="mainFrame" class="left_list">商品管理</a></td>
 			  </tr>
 			  <tr>
 			  	<td><a href="${pageContext.request.contextPath}/admin/products/download.jsp" target="mainFrame" class="left_list">销售榜单</a></td>

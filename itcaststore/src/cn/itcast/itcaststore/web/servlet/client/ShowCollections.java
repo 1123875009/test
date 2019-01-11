@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import cn.itcast.itcaststore.domain.User;
 import cn.itcast.itcaststore.service.CollectionService;
+import cn.itcast.itcaststore.service.UserService;
 
 /**
  * Servlet implementation class ShowCollections
@@ -39,14 +40,17 @@ public class ShowCollections extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		User u = (User) session.getAttribute("user");
+		if(u==null){
+			response.sendRedirect(request.getContextPath() + "/client/error/privilege.jsp");
+			return;
+		}
 		CollectionService service = new CollectionService();
-		 HttpSession session = request.getSession();
 		String id = request.getParameter("id"); //得到商品编号
-		User u=(User) session.getAttribute("user");
 		List<Object[]> cList=service.getCollections(u.getId());
 		session.setAttribute("cList", cList);
 		response.sendRedirect(request.getContextPath() + "/client/collectProduct.jsp");
-		
 	}
 
 }
