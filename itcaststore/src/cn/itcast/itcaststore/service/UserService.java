@@ -3,16 +3,13 @@ import java.sql.SQLException;
 import java.util.Date;
 import javax.security.auth.login.LoginException;
 
-import org.apache.commons.dbutils.QueryRunner;
-import org.apache.commons.dbutils.handlers.BeanHandler;
-
 import cn.itcast.itcaststore.dao.UserDao;
 import cn.itcast.itcaststore.domain.User;
 import cn.itcast.itcaststore.exception.ActiveUserException;
 import cn.itcast.itcaststore.exception.RegisterException;
-import cn.itcast.itcaststore.utils.DataSourceUtils;
 import cn.itcast.itcaststore.utils.MD5Util;
 import cn.itcast.itcaststore.utils.MailUtils;
+
 
 public class UserService {
 	private UserDao dao = new UserDao();
