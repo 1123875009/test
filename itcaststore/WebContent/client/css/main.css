@@ -285,11 +285,11 @@ h1 {
 /*分页*/
 .pagination {
 	padding: 5px;
-	width: 790px;
+	width: 900px;
 	margin: 5px auto;
 	text-align: center;
 }
-
+/*270*/
 .pagination ul {
 	width:270px;
 	margin: 5px auto;

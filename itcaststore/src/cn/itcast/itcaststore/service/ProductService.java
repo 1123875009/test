@@ -7,6 +7,7 @@ import cn.itcast.itcaststore.domain.Product;
 import cn.itcast.itcaststore.exception.AddProductException;
 import cn.itcast.itcaststore.exception.FindProductByIdException;
 import cn.itcast.itcaststore.exception.ListProductException;
+import javafx.scene.control.Tab;
 public class ProductService {
 	private ProductDao dao = new ProductDao();
 	// 添加商品
@@ -73,7 +74,7 @@ public class ProductService {
 		return salesList;
 	}
 	// 多条件查询
-	public List<Product> findProductByManyCondition(String id, String name,
+	/*public List<Product> findProductByManyCondition(String id, String name,
 			String category, String minprice, String maxprice) {
 		List<Product> ps = null;
 		try {
@@ -83,7 +84,31 @@ public class ProductService {
 			e.printStackTrace();
 		}
 		return ps;
+	}*/
+	public PageBean findProductByManyCondition(String id, String name,
+			String category, String minprice, String maxprice,int currentCount,
+			int currentPage) {
+		PageBean bean = new PageBean();
+		bean.setCategory(category);
+		int totalCount;
+		try {
+			bean.setCurrentCount(currentCount);
+			totalCount = dao.findAllCountByCon(id,name,minprice,maxprice,category);
+			System.out.println("获取的总记录数为："+totalCount);
+			bean.setTotalCount(totalCount);
+			bean.setCurrentPage(currentPage);
+			// 获取总页数
+			int totalPage = (int) Math.ceil(totalCount * 1.0 / currentCount);
+			bean.setTotalPage(totalPage);
+			List<Product> ps = dao.findProductByManyCondition(id, name, category, minprice, maxprice,currentCount,currentPage);
+			bean.setPs(ps);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return bean;
 	}
+	
 	// 修改商品信息
 	public void editProduct(Product p) {
 		try {

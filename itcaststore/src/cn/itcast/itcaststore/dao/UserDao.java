@@ -2,6 +2,8 @@ package cn.itcast.itcaststore.dao;
 import java.sql.SQLException;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
+
 import cn.itcast.itcaststore.domain.User;
 import cn.itcast.itcaststore.utils.DataSourceUtils;
 
@@ -40,4 +42,17 @@ public class UserDao {//相应的对数据库的操作
 		return runner.query(sql, new BeanHandler<User>(User.class),username,password);
 	}//sql，返回的user对象，两个占位符的参数
 
+	public void changeScore(User u)throws SQLException {
+		String sql="update user set score=? where id=?";
+		QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
+		runner.update(sql,u.getScore(),u.getId()); 
+	}
+	
+	public void changePassword(User u) throws SQLException{
+		String sql="update user set password=?,telephone=? where id=?";
+		QueryRunner runner = new QueryRunner(DataSourceUtils.getDataSource());
+		runner.update(sql,u.getPassword(),u.getTelephone(),u.getId()); 
+	}
+
+	
 }

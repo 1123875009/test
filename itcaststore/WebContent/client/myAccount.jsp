@@ -41,6 +41,17 @@
 								<a href="${pageContext.request.contextPath}/findOrderByUser">订单查询</a>
 							</td>
 						</tr>
+						
+						
+						<tr>
+							<td class="listtd">
+								<img src="${pageContext.request.contextPath }/client/images/icon2.png" width="15" height="10" />
+								&nbsp;&nbsp;&nbsp;&nbsp; 
+								<a href="${pageContext.request.contextPath}/FindScoreByUser">积分查询</a>
+							</td>
+						</tr>
+						
+						
 						<tr>
 							<td class="listtd">
 								<img src="${pageContext.request.contextPath }/client/images/icon3.png" width="15" height="10" />

@@ -20,7 +20,10 @@
 							</td>
 							<td style="padding-top:30px">
 								<font style="font-weight:bold; color:#FF0000">支付成功</font><br /><br /> 
-								<a href="${pageContext.request.contextPath }/index.jsp">
+								<%-- <a href="${pageContext.request.contextPath }/index.jsp">
+									--%>
+									<a href="${pageContext.request.contextPath}/client/index.jsp">
+								
 									<span id="second">5</span>秒后自动为您转跳回首页
 								</a>
 							</td>

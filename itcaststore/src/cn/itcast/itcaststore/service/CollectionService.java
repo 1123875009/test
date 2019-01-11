@@ -52,4 +52,19 @@ public class CollectionService {
 		}
 	}
 	
+	public boolean findCollection(int uid,String pid){
+		try {
+			Collection collect = dao.findCollection(uid,pid);
+			if(collect==null){
+				return false;
+			}else{
+				return true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;	
+	}
+	
 }

@@ -44,8 +44,8 @@ public class AutoplayServlet extends HttpServlet {
 		PictureService service = new PictureService();
 		List<Picture> pictures = service.getAllPictures();
 		//request.setAttribute("pictures", pictures);
-		HttpSession session = request.getSession();
-		session.setAttribute("pictures", pictures);
+		request.setAttribute("pictures", pictures);
+		System.out.println(pictures);
 		request.getRequestDispatcher("/admin/autoplaymanage/view.jsp").forward(request, response);
 		//response.sendRedirect(request.getContextPath() + "/admin/autoplaymanage/view.jsp");
 		

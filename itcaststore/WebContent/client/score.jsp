@@ -1,22 +1,10 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="p" uri="http://www.itcast.cn/tag"%>  <!-- 自定义的标签 -->
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 	<title>电子书城</title>
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/client/css/main.css" type="text/css" />
-	<script type="text/javascript">
-	//删除订单
-	function o_del() {   
-	    var msg = "您确定要删除该订单吗？";   
-	    if (confirm(msg)==true){   
-	    return true;   
-	    }else{   
-	    return false;   
-	    }   
-	} 
-	</script>
 </head>
 <body class="main">
 	<!-- 使用了自定义标签  这里的标签实际上是执行了PrivilegeTag.class中的代码段，判断用户是否有权限进行操作-->
@@ -45,6 +33,7 @@
 								<a href="${pageContext.request.contextPath}/findOrderByUser">订单查询</a>
 							</td>
 						</tr>
+						
 						<tr>
 							<td class="listtd">
 								<img src="${pageContext.request.contextPath }/client/images/icon2.png" width="15" height="10" />
@@ -52,6 +41,7 @@
 								<a href="${pageContext.request.contextPath}/FindScoreByUser">积分查询</a>
 							</td>
 						</tr>
+						
 						<tr>
 							<td class="listtd">
 								<img src="${pageContext.request.contextPath }/client/images/icon3.png" width="15" height="10" />
@@ -67,44 +57,24 @@
 						&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;
 						<a href="${pageContext.request.contextPath }/client/myAccount.jsp">&nbsp;我的帐户</a>
 						&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;&nbsp;
-						订单查询
+						积分查询
 					</div>
 					<table cellspacing="0" class="infocontent">
 						<tr>
-							<td style="padding:20px"><p><b>我的订单</b></p>
-								<p>
-								                                  <!-- 将订单数显示出来 -->
-									共有<font style="color:#FF0000" >${orders.size()}</font>订单
-								</p>
+							<td style="padding:20px"><p><b>我的积分</b></p>
+								
 								<table width="100%" border="0" cellspacing="0" class="tableopen">
 									<tr>
-										<td bgcolor="#A3E6DF" class="tableopentd01">订单号</td>
-										<td bgcolor="#A3D7E6" class="tableopentd01">收件人</td>
-										<td bgcolor="#A3CCE6" class="tableopentd01">订单时间</td>
-										<td bgcolor="#A3B6E6" class="tableopentd01">状态</td>
-										<td bgcolor="#A3E2E6" class="tableopentd01">操作</td>
+										<td bgcolor="#A3E6DF" class="tableopentd01">用户</td>
+										<td bgcolor="#A3E2E6" class="tableopentd01">积分</td>
 									</tr>
-									<!-- 循环 -->
-									<c:forEach items="${orders}" var="order">
+								
+									
 										<tr>
-											<td class="tableopentd02">${order.id}</td>
-											<td class="tableopentd02">${order.receiverName }</td>
-											<td class="tableopentd02">${order.ordertime}</td>
-											<td class="tableopentd02">${order.paystate==0?"未支付":"已支付"}</td>
-											<td class="tableopentd03">                         <!--通过订单的id号查看 -->
-												<a href="${pageContext.request.contextPath}/findOrderById?id=${order.id}">查看</a>&nbsp;&nbsp;
-												<!-- 删除订单需要判断判断订单的支付状态 -->
-												<!-- 未支付时 将订单的id传出-->
-												<c:if test="${order.paystate==0 }">
-													<a href="${pageContext.request.contextPath}/delOrderById?id=${order.id}"  onclick="javascript:return o_del()">刪除</a>
-												</c:if> 
-												<!-- 若已支付  将订单的id传出 并加上参数type-->
-												<c:if test="${order.paystate!=0 }">     <!-- 进入servlet进行判断 -->
-													<a href="${pageContext.request.contextPath}/delOrderById?id=${order.id}&type=client" onclick="javascript:return o_del()">刪除</a>
-												</c:if>
-											</td>
+											<td class="tableopentd02">${user.username}</td>
+											<td class="tableopentd02">${user.score}</td>	
 										</tr>
-									</c:forEach>
+									
 								</table>
 							</td>
 						</tr>
